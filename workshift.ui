@@ -1,0 +1,645 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ui version="4.0">
+ <class>WorkShift</class>
+ <widget class="QDialog" name="WorkShift">
+  <property name="geometry">
+   <rect>
+    <x>0</x>
+    <y>0</y>
+    <width>474</width>
+    <height>382</height>
+   </rect>
+  </property>
+  <property name="focusPolicy">
+   <enum>Qt::ClickFocus</enum>
+  </property>
+  <property name="windowTitle">
+   <string>Dialog</string>
+  </property>
+  <property name="styleSheet">
+   <string notr="true">background-color: rgb(248, 248, 255);</string>
+  </property>
+  <widget class="QPushButton" name="pushButton_cancel">
+   <property name="geometry">
+    <rect>
+     <x>251</x>
+     <y>330</y>
+     <width>80</width>
+     <height>31</height>
+    </rect>
+   </property>
+   <property name="focusPolicy">
+    <enum>Qt::NoFocus</enum>
+   </property>
+   <property name="styleSheet">
+    <string notr="true">QPushButton{
+   font: 14pt &quot;黑体&quot;;
+   color: rgb(248, 248, 255);
+   border-style:solid;
+   background-color: rgb(255, 102, 102);
+}</string>
+   </property>
+   <property name="text">
+    <string>取消</string>
+   </property>
+  </widget>
+  <widget class="QPushButton" name="pushButton_save">
+   <property name="geometry">
+    <rect>
+     <x>351</x>
+     <y>330</y>
+     <width>111</width>
+     <height>31</height>
+    </rect>
+   </property>
+   <property name="focusPolicy">
+    <enum>Qt::NoFocus</enum>
+   </property>
+   <property name="contextMenuPolicy">
+    <enum>Qt::NoContextMenu</enum>
+   </property>
+   <property name="styleSheet">
+    <string notr="true">QPushButton{
+   font: 14pt &quot;黑体&quot;;
+   color: rgb(248, 248, 255);
+   border-style:solid;
+   background-color: rgb(51, 153, 255);
+}
+QPushButton:pressed{
+	Qt::ToolButtonTextUnderIcon
+}</string>
+   </property>
+   <property name="text">
+    <string>保存</string>
+   </property>
+   <property name="flat">
+    <bool>true</bool>
+   </property>
+  </widget>
+  <widget class="QPushButton" name="pushButton_delete">
+   <property name="geometry">
+    <rect>
+     <x>151</x>
+     <y>330</y>
+     <width>80</width>
+     <height>31</height>
+    </rect>
+   </property>
+   <property name="focusPolicy">
+    <enum>Qt::NoFocus</enum>
+   </property>
+   <property name="styleSheet">
+    <string notr="true">QPushButton{
+   font: 14pt &quot;黑体&quot;;
+   color: rgb(248, 248, 255);
+   border-style:solid;
+   background-color: rgb(250, 206, 16);
+}</string>
+   </property>
+   <property name="text">
+    <string>删除</string>
+   </property>
+  </widget>
+  <widget class="QLineEdit" name="lineEdit_workShiftName">
+   <property name="geometry">
+    <rect>
+     <x>125</x>
+     <y>65</y>
+     <width>211</width>
+     <height>35</height>
+    </rect>
+   </property>
+   <property name="focusPolicy">
+    <enum>Qt::ClickFocus</enum>
+   </property>
+   <property name="styleSheet">
+    <string notr="true">font: 14pt &quot;Arial&quot;;
+border-width:1px; 
+border-style:solid; 
+border-color:rgb(51, 153, 255); 
+margin-top: 0ex;</string>
+   </property>
+   <property name="text">
+    <string/>
+   </property>
+  </widget>
+  <widget class="QLabel" name="label_45">
+   <property name="geometry">
+    <rect>
+     <x>30</x>
+     <y>65</y>
+     <width>91</width>
+     <height>35</height>
+    </rect>
+   </property>
+   <property name="styleSheet">
+    <string notr="true">font: 14pt &quot;黑体&quot;;</string>
+   </property>
+   <property name="text">
+    <string>班次：</string>
+   </property>
+  </widget>
+  <widget class="QLabel" name="label_46">
+   <property name="geometry">
+    <rect>
+     <x>30</x>
+     <y>160</y>
+     <width>91</width>
+     <height>35</height>
+    </rect>
+   </property>
+   <property name="styleSheet">
+    <string notr="true">font: 14pt &quot;黑体&quot;;</string>
+   </property>
+   <property name="text">
+    <string>上工时间：</string>
+   </property>
+  </widget>
+  <widget class="QLabel" name="label_47">
+   <property name="geometry">
+    <rect>
+     <x>238</x>
+     <y>160</y>
+     <width>91</width>
+     <height>35</height>
+    </rect>
+   </property>
+   <property name="styleSheet">
+    <string notr="true">font: 14pt &quot;黑体&quot;;</string>
+   </property>
+   <property name="text">
+    <string>下工时间：</string>
+   </property>
+  </widget>
+  <widget class="QLineEdit" name="lineEdit_remark">
+   <property name="geometry">
+    <rect>
+     <x>125</x>
+     <y>260</y>
+     <width>211</width>
+     <height>35</height>
+    </rect>
+   </property>
+   <property name="focusPolicy">
+    <enum>Qt::ClickFocus</enum>
+   </property>
+   <property name="styleSheet">
+    <string notr="true">font: 14pt &quot;Arial&quot;;
+border-width:1px; 
+border-style:solid; 
+border-color:rgb(51, 153, 255); 
+margin-top: 0ex;</string>
+   </property>
+   <property name="text">
+    <string/>
+   </property>
+  </widget>
+  <widget class="QLabel" name="label_48">
+   <property name="geometry">
+    <rect>
+     <x>31</x>
+     <y>260</y>
+     <width>91</width>
+     <height>35</height>
+    </rect>
+   </property>
+   <property name="styleSheet">
+    <string notr="true">font: 14pt &quot;黑体&quot;;</string>
+   </property>
+   <property name="text">
+    <string>英文：</string>
+   </property>
+  </widget>
+  <widget class="QLabel" name="label">
+   <property name="geometry">
+    <rect>
+     <x>180</x>
+     <y>0</y>
+     <width>91</width>
+     <height>41</height>
+    </rect>
+   </property>
+   <property name="styleSheet">
+    <string notr="true">font: 14pt &quot;黑体&quot;;</string>
+   </property>
+   <property name="text">
+    <string>增加班次</string>
+   </property>
+   <property name="alignment">
+    <set>Qt::AlignCenter</set>
+   </property>
+  </widget>
+  <widget class="QLabel" name="label_wrong">
+   <property name="geometry">
+    <rect>
+     <x>27</x>
+     <y>33</y>
+     <width>301</width>
+     <height>31</height>
+    </rect>
+   </property>
+   <property name="styleSheet">
+    <string notr="true">font: 14pt &quot;黑体&quot;;
+color: rgb(250, 0, 0);</string>
+   </property>
+   <property name="text">
+    <string>请填写班次名！</string>
+   </property>
+  </widget>
+  <widget class="QPushButton" name="pushButton_StartMinuteSubstract">
+   <property name="geometry">
+    <rect>
+     <x>186</x>
+     <y>198</y>
+     <width>41</width>
+     <height>31</height>
+    </rect>
+   </property>
+   <property name="focusPolicy">
+    <enum>Qt::TabFocus</enum>
+   </property>
+   <property name="styleSheet">
+    <string notr="true">border-image: url(:/LCD_CS351/LCD_CS351/35_all/67.bmp);
+background:transparent;
+font: 14pt &quot;黑体&quot;;
+color: rgb(248, 248, 255);</string>
+   </property>
+   <property name="text">
+    <string>－</string>
+   </property>
+   <property name="flat">
+    <bool>true</bool>
+   </property>
+  </widget>
+  <widget class="QPushButton" name="pushButton_StartHourSubstract">
+   <property name="geometry">
+    <rect>
+     <x>127</x>
+     <y>198</y>
+     <width>41</width>
+     <height>31</height>
+    </rect>
+   </property>
+   <property name="focusPolicy">
+    <enum>Qt::TabFocus</enum>
+   </property>
+   <property name="styleSheet">
+    <string notr="true">border-image: url(:/LCD_CS351/LCD_CS351/35_all/67.bmp);
+background:transparent;
+font: 14pt &quot;黑体&quot;;
+color: rgb(248, 248, 255);</string>
+   </property>
+   <property name="text">
+    <string>－</string>
+   </property>
+   <property name="flat">
+    <bool>true</bool>
+   </property>
+  </widget>
+  <widget class="QPushButton" name="pushButton_StartMinuteAdd">
+   <property name="geometry">
+    <rect>
+     <x>186</x>
+     <y>126</y>
+     <width>41</width>
+     <height>31</height>
+    </rect>
+   </property>
+   <property name="focusPolicy">
+    <enum>Qt::TabFocus</enum>
+   </property>
+   <property name="styleSheet">
+    <string notr="true">border-image: url(:/LCD_CS351/LCD_CS351/35_all/67.bmp);
+background:transparent;
+font: 14pt &quot;黑体&quot;;
+color: rgb(248, 248, 255);</string>
+   </property>
+   <property name="text">
+    <string>+</string>
+   </property>
+   <property name="flat">
+    <bool>true</bool>
+   </property>
+  </widget>
+  <widget class="QPushButton" name="pushButton_StartHourAdd">
+   <property name="geometry">
+    <rect>
+     <x>127</x>
+     <y>126</y>
+     <width>41</width>
+     <height>31</height>
+    </rect>
+   </property>
+   <property name="focusPolicy">
+    <enum>Qt::TabFocus</enum>
+   </property>
+   <property name="styleSheet">
+    <string notr="true">border-image: url(:/LCD_CS351/LCD_CS351/35_all/67.bmp);
+background:transparent;
+font: 14pt &quot;黑体&quot;;
+color: rgb(248, 248, 255);</string>
+   </property>
+   <property name="text">
+    <string>+</string>
+   </property>
+   <property name="flat">
+    <bool>true</bool>
+   </property>
+  </widget>
+  <widget class="QPushButton" name="pushButton_EndMinuteSubstract">
+   <property name="geometry">
+    <rect>
+     <x>392</x>
+     <y>198</y>
+     <width>41</width>
+     <height>31</height>
+    </rect>
+   </property>
+   <property name="focusPolicy">
+    <enum>Qt::TabFocus</enum>
+   </property>
+   <property name="styleSheet">
+    <string notr="true">border-image: url(:/LCD_CS351/LCD_CS351/35_all/67.bmp);
+background:transparent;
+font: 14pt &quot;黑体&quot;;
+color: rgb(248, 248, 255);</string>
+   </property>
+   <property name="text">
+    <string>－</string>
+   </property>
+   <property name="flat">
+    <bool>true</bool>
+   </property>
+  </widget>
+  <widget class="QPushButton" name="pushButton_EndHourSubstract">
+   <property name="geometry">
+    <rect>
+     <x>335</x>
+     <y>198</y>
+     <width>41</width>
+     <height>31</height>
+    </rect>
+   </property>
+   <property name="focusPolicy">
+    <enum>Qt::TabFocus</enum>
+   </property>
+   <property name="styleSheet">
+    <string notr="true">border-image: url(:/LCD_CS351/LCD_CS351/35_all/67.bmp);
+background:transparent;
+font: 14pt &quot;黑体&quot;;
+color: rgb(248, 248, 255);</string>
+   </property>
+   <property name="text">
+    <string>－</string>
+   </property>
+   <property name="flat">
+    <bool>true</bool>
+   </property>
+  </widget>
+  <widget class="QPushButton" name="pushButton_EndMinuteAdd">
+   <property name="geometry">
+    <rect>
+     <x>392</x>
+     <y>126</y>
+     <width>41</width>
+     <height>31</height>
+    </rect>
+   </property>
+   <property name="focusPolicy">
+    <enum>Qt::TabFocus</enum>
+   </property>
+   <property name="styleSheet">
+    <string notr="true">border-image: url(:/LCD_CS351/LCD_CS351/35_all/67.bmp);
+background:transparent;
+font: 14pt &quot;黑体&quot;;
+color: rgb(248, 248, 255);</string>
+   </property>
+   <property name="text">
+    <string>+</string>
+   </property>
+   <property name="flat">
+    <bool>true</bool>
+   </property>
+  </widget>
+  <widget class="QPushButton" name="pushButton_EndHourAdd">
+   <property name="geometry">
+    <rect>
+     <x>335</x>
+     <y>126</y>
+     <width>41</width>
+     <height>31</height>
+    </rect>
+   </property>
+   <property name="focusPolicy">
+    <enum>Qt::TabFocus</enum>
+   </property>
+   <property name="styleSheet">
+    <string notr="true">border-image: url(:/LCD_CS351/LCD_CS351/35_all/67.bmp);
+background:transparent;
+font: 14pt &quot;黑体&quot;;
+color: rgb(248, 248, 255);</string>
+   </property>
+   <property name="text">
+    <string>+</string>
+   </property>
+   <property name="flat">
+    <bool>true</bool>
+   </property>
+  </widget>
+  <widget class="QLabel" name="label_361">
+   <property name="geometry">
+    <rect>
+     <x>168</x>
+     <y>167</y>
+     <width>13</width>
+     <height>21</height>
+    </rect>
+   </property>
+   <property name="styleSheet">
+    <string notr="true">font: 14pt &quot;黑体&quot;;</string>
+   </property>
+   <property name="text">
+    <string> :</string>
+   </property>
+   <property name="alignment">
+    <set>Qt::AlignCenter</set>
+   </property>
+  </widget>
+  <widget class="QLabel" name="label_362">
+   <property name="geometry">
+    <rect>
+     <x>376</x>
+     <y>167</y>
+     <width>13</width>
+     <height>21</height>
+    </rect>
+   </property>
+   <property name="styleSheet">
+    <string notr="true">font: 14pt &quot;黑体&quot;;</string>
+   </property>
+   <property name="text">
+    <string> :</string>
+   </property>
+   <property name="alignment">
+    <set>Qt::AlignCenter</set>
+   </property>
+  </widget>
+  <widget class="QTimeEdit" name="timeEdit_StartHour">
+   <property name="geometry">
+    <rect>
+     <x>127</x>
+     <y>157</y>
+     <width>41</width>
+     <height>41</height>
+    </rect>
+   </property>
+   <property name="focusPolicy">
+    <enum>Qt::NoFocus</enum>
+   </property>
+   <property name="styleSheet">
+    <string notr="true">font: 14pt &quot;黑体&quot;;
+border-width:1px; 
+border-style:solid; 
+border-color:rgb(51, 153, 255); </string>
+   </property>
+   <property name="alignment">
+    <set>Qt::AlignCenter</set>
+   </property>
+   <property name="buttonSymbols">
+    <enum>QAbstractSpinBox::NoButtons</enum>
+   </property>
+   <property name="minimumTime">
+    <time>
+     <hour>0</hour>
+     <minute>0</minute>
+     <second>0</second>
+    </time>
+   </property>
+   <property name="displayFormat">
+    <string>hh</string>
+   </property>
+   <property name="time">
+    <time>
+     <hour>8</hour>
+     <minute>0</minute>
+     <second>0</second>
+    </time>
+   </property>
+  </widget>
+  <widget class="QTimeEdit" name="timeEdit_EndHour">
+   <property name="geometry">
+    <rect>
+     <x>335</x>
+     <y>157</y>
+     <width>41</width>
+     <height>41</height>
+    </rect>
+   </property>
+   <property name="focusPolicy">
+    <enum>Qt::NoFocus</enum>
+   </property>
+   <property name="styleSheet">
+    <string notr="true">font: 14pt &quot;黑体&quot;;
+border-width:1px; 
+border-style:solid; 
+border-color:rgb(51, 153, 255); </string>
+   </property>
+   <property name="alignment">
+    <set>Qt::AlignCenter</set>
+   </property>
+   <property name="buttonSymbols">
+    <enum>QAbstractSpinBox::NoButtons</enum>
+   </property>
+   <property name="displayFormat">
+    <string>hh</string>
+   </property>
+   <property name="time">
+    <time>
+     <hour>17</hour>
+     <minute>0</minute>
+     <second>0</second>
+    </time>
+   </property>
+  </widget>
+  <widget class="QTimeEdit" name="timeEdit_StartMinute">
+   <property name="geometry">
+    <rect>
+     <x>186</x>
+     <y>157</y>
+     <width>41</width>
+     <height>41</height>
+    </rect>
+   </property>
+   <property name="focusPolicy">
+    <enum>Qt::NoFocus</enum>
+   </property>
+   <property name="styleSheet">
+    <string notr="true">font: 14pt &quot;黑体&quot;;
+border-width:1px; 
+border-style:solid; 
+border-color:rgb(51, 153, 255); </string>
+   </property>
+   <property name="alignment">
+    <set>Qt::AlignCenter</set>
+   </property>
+   <property name="buttonSymbols">
+    <enum>QAbstractSpinBox::NoButtons</enum>
+   </property>
+   <property name="displayFormat">
+    <string>mm</string>
+   </property>
+  </widget>
+  <widget class="QTimeEdit" name="timeEdit_EndMinute">
+   <property name="geometry">
+    <rect>
+     <x>392</x>
+     <y>157</y>
+     <width>41</width>
+     <height>41</height>
+    </rect>
+   </property>
+   <property name="focusPolicy">
+    <enum>Qt::NoFocus</enum>
+   </property>
+   <property name="styleSheet">
+    <string notr="true">font: 14pt &quot;黑体&quot;;
+border-width:1px; 
+border-style:solid; 
+border-color:rgb(51, 153, 255); </string>
+   </property>
+   <property name="alignment">
+    <set>Qt::AlignCenter</set>
+   </property>
+   <property name="buttonSymbols">
+    <enum>QAbstractSpinBox::NoButtons</enum>
+   </property>
+   <property name="displayFormat">
+    <string>mm</string>
+   </property>
+  </widget>
+  <widget class="QPushButton" name="pushButton_close">
+   <property name="geometry">
+    <rect>
+     <x>436</x>
+     <y>0</y>
+     <width>38</width>
+     <height>38</height>
+    </rect>
+   </property>
+   <property name="focusPolicy">
+    <enum>Qt::NoFocus</enum>
+   </property>
+   <property name="styleSheet">
+    <string notr="true">border-image: url(:/LCD_CS351/LCD_CS351/35_all/cha.bmp);</string>
+   </property>
+   <property name="text">
+    <string/>
+   </property>
+   <property name="flat">
+    <bool>true</bool>
+   </property>
+  </widget>
+ </widget>
+ <resources/>
+ <connections/>
+</ui>
