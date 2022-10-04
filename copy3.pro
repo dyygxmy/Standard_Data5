@@ -4,11 +4,7 @@
 
 QT       += core  gui   xml  sql  network
 TEMPLATE = app
-<<<<<<< HEAD
-TARGET = VN22.10.3.1
-=======
 TARGET = VN22.9.22.1
->>>>>>> 7de4255b36e7cfc92a6075cd6e7fd67f681b75e8
 DEPENDPATH += . proto json
 INCLUDEPATH += . proto json
 CFLAGS += -Wno-psabi
