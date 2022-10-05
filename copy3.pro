@@ -294,9 +294,6 @@ RESOURCES += file.qrc \
 OTHER_FILES +=
 
 UI_DIR=./UI
-<<<<<<< HEAD
 
 DISTFILES += \
     explain.py
-=======
->>>>>>> 7de4255b36e7cfc92a6075cd6e7fd67f681b75e8
