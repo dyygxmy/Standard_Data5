@@ -19,11 +19,16 @@ signals:
     void wifi_connect(bool);
     void data_connect(bool);
     void rfidconnect(bool);
+	void sb356connect(bool);
+    void rfidConnected(bool);
+//    void sendPlusFlag(bool);
     //void send_unconnect(bool);
     
 public slots:
     void Wifi_ConnectStart();
     void timerWifi();
+    void slot_ConnTimeout();
+
 
 private:
     QThread wificonnect_thread;
@@ -31,9 +36,11 @@ private:
     bool DataConnected;
     bool ApConnected;
     bool RfidConnected;
+    bool PlusConnected;
     int gateway;
     int dataserver;
     int rfidserver;
+    QString Factory;
 //    int countnum;
 //    int number;
 //    bool wifiIn;
@@ -42,7 +49,7 @@ private:
 //    bool wifiIn_data;
 //    bool wifiOut_data;
 
-    
+    QTimer      mConnTimer;
 };
 
 #endif // WIFICONNECT_H

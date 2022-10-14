@@ -335,12 +335,76 @@ background-color: rgb(51, 155, 255);
         <bool>false</bool>
        </property>
       </widget>
+      <widget class="QPushButton" name="btnSkipOne">
+       <property name="geometry">
+        <rect>
+         <x>40</x>
+         <y>35</y>
+         <width>100</width>
+         <height>35</height>
+        </rect>
+       </property>
+       <property name="styleSheet">
+        <string notr="true">font: 14pt &quot;黑体&quot;;
+background-color: rgb(255, 255, 255);</string>
+       </property>
+       <property name="text">
+        <string>跳过一个</string>
+       </property>
+      </widget>
+      <widget class="QPushButton" name="btnSkipAll">
+       <property name="geometry">
+        <rect>
+         <x>40</x>
+         <y>80</y>
+         <width>100</width>
+         <height>35</height>
+        </rect>
+       </property>
+       <property name="styleSheet">
+        <string notr="true">font: 14pt &quot;黑体&quot;;
+background-color: rgb(255, 255, 255);</string>
+       </property>
+       <property name="text">
+        <string>跳过全部</string>
+       </property>
+      </widget>
+      <widget class="QLineEdit" name="lineEdit_labelValue">
+       <property name="geometry">
+        <rect>
+         <x>1032</x>
+         <y>90</y>
+         <width>51</width>
+         <height>25</height>
+        </rect>
+       </property>
+       <property name="styleSheet">
+        <string notr="true">background-color: rgb(240, 255, 238);</string>
+       </property>
+      </widget>
+      <widget class="QPushButton" name="senLabelValue">
+       <property name="geometry">
+        <rect>
+         <x>1090</x>
+         <y>90</y>
+         <width>80</width>
+         <height>24</height>
+        </rect>
+       </property>
+       <property name="text">
+        <string>风险测试</string>
+       </property>
+      </widget>
       <zorder>progressBar</zorder>
       <zorder>label_17</zorder>
       <zorder>label_time</zorder>
       <zorder>label_tiaomastate</zorder>
+      <zorder>btnSkipOne</zorder>
+      <zorder>btnSkipAll</zorder>
+      <zorder>lineEdit_labelValue</zorder>
+      <zorder>senLabelValue</zorder>
      </widget>
-     <widget class="QStackedWidget" name="stackedWidget_6">
+     <widget class="QWidget" name="widget_6" native="true">
       <property name="geometry">
        <rect>
         <x>0</x>
@@ -349,836 +413,1500 @@ background-color: rgb(51, 155, 255);
         <height>598</height>
        </rect>
       </property>
-      <property name="styleSheet">
-       <string notr="true"/>
-      </property>
-      <property name="currentIndex">
-       <number>0</number>
-      </property>
-      <widget class="QWidget" name="stackedWidget_6Page1">
-       <widget class="QWidget" name="widget" native="true">
-        <property name="geometry">
-         <rect>
-          <x>0</x>
-          <y>0</y>
-          <width>200</width>
-          <height>598</height>
-         </rect>
-        </property>
-        <property name="styleSheet">
-         <string notr="true">background-color: rgb(51, 153, 255);</string>
-        </property>
-        <widget class="QPushButton" name="pushButton_10">
-         <property name="enabled">
-          <bool>false</bool>
-         </property>
+      <widget class="QStackedWidget" name="stackedWidget_6">
+       <property name="geometry">
+        <rect>
+         <x>0</x>
+         <y>0</y>
+         <width>1366</width>
+         <height>598</height>
+        </rect>
+       </property>
+       <property name="styleSheet">
+        <string notr="true"/>
+       </property>
+       <property name="currentIndex">
+        <number>0</number>
+       </property>
+       <widget class="QWidget" name="stackedWidget_6Page1">
+        <widget class="QWidget" name="widget" native="true">
          <property name="geometry">
           <rect>
-           <x>30</x>
-           <y>30</y>
-           <width>143</width>
-           <height>39</height>
+           <x>0</x>
+           <y>0</y>
+           <width>200</width>
+           <height>598</height>
+          </rect>
+         </property>
+         <property name="styleSheet">
+          <string notr="true">background-color: rgb(51, 153, 255);</string>
+         </property>
+         <widget class="Line" name="line_2">
+          <property name="geometry">
+           <rect>
+            <x>21</x>
+            <y>191</y>
+            <width>160</width>
+            <height>5</height>
+           </rect>
+          </property>
+          <property name="autoFillBackground">
+           <bool>false</bool>
+          </property>
+          <property name="styleSheet">
+           <string notr="true">border-image: url(:/LCD_CS351/LCD_CS351/logo/line.bmp);
+background:transparent;</string>
+          </property>
+          <property name="midLineWidth">
+           <number>0</number>
+          </property>
+          <property name="orientation">
+           <enum>Qt::Horizontal</enum>
+          </property>
+         </widget>
+         <widget class="Line" name="line_3">
+          <property name="geometry">
+           <rect>
+            <x>20</x>
+            <y>311</y>
+            <width>160</width>
+            <height>5</height>
+           </rect>
+          </property>
+          <property name="styleSheet">
+           <string notr="true">border-image: url(:/LCD_CS351/LCD_CS351/logo/line.bmp);
+background:transparent;</string>
+          </property>
+          <property name="orientation">
+           <enum>Qt::Horizontal</enum>
+          </property>
+         </widget>
+         <widget class="Line" name="line">
+          <property name="geometry">
+           <rect>
+            <x>20</x>
+            <y>410</y>
+            <width>160</width>
+            <height>5</height>
+           </rect>
+          </property>
+          <property name="styleSheet">
+           <string notr="true">border-image: url(:/LCD_CS351/LCD_CS351/logo/line.bmp);
+background:transparent;</string>
+          </property>
+          <property name="orientation">
+           <enum>Qt::Horizontal</enum>
+          </property>
+         </widget>
+         <widget class="QPushButton" name="pushButton_12">
+          <property name="enabled">
+           <bool>true</bool>
+          </property>
+          <property name="geometry">
+           <rect>
+            <x>120</x>
+            <y>529</y>
+            <width>51</width>
+            <height>51</height>
+           </rect>
+          </property>
+          <property name="focusPolicy">
+           <enum>Qt::NoFocus</enum>
+          </property>
+          <property name="styleSheet">
+           <string notr="true">border-style: solid;
+
+image: url(:/LCD_CS351/LCD_CS351/logo/GWK.png);</string>
+          </property>
+          <property name="text">
+           <string/>
+          </property>
+          <property name="flat">
+           <bool>true</bool>
+          </property>
+         </widget>
+         <widget class="QWidget" name="layoutWidget_3">
+          <property name="geometry">
+           <rect>
+            <x>20</x>
+            <y>214</y>
+            <width>181</width>
+            <height>81</height>
+           </rect>
+          </property>
+          <layout class="QVBoxLayout" name="verticalLayout_2">
+           <item>
+            <layout class="QHBoxLayout" name="horizontalLayout_4" stretch="1,2">
+             <item>
+              <widget class="QLabel" name="label_4">
+               <property name="styleSheet">
+                <string notr="true">font: 12pt &quot;黑体&quot;;
+color: rgb(248, 248, 255);</string>
+               </property>
+               <property name="text">
+                <string>工    段：</string>
+               </property>
+              </widget>
+             </item>
+             <item>
+              <widget class="QLabel" name="label_gongduan">
+               <property name="styleSheet">
+                <string notr="true">font: 12pt &quot;黑体&quot;;
+color: rgb(248, 248, 255);</string>
+               </property>
+               <property name="text">
+                <string>ba0</string>
+               </property>
+              </widget>
+             </item>
+            </layout>
+           </item>
+           <item>
+            <layout class="QHBoxLayout" name="horizontalLayout_5" stretch="1,2">
+             <item>
+              <widget class="QLabel" name="label_5">
+               <property name="styleSheet">
+                <string notr="true">font: 12pt &quot;黑体&quot;;
+color: rgb(248, 248, 255);</string>
+               </property>
+               <property name="text">
+                <string>工    位：</string>
+               </property>
+              </widget>
+             </item>
+             <item>
+              <widget class="QLabel" name="label_gongwei">
+               <property name="styleSheet">
+                <string notr="true">font: 12pt &quot;黑体&quot;;
+color: rgb(248, 248, 255);</string>
+               </property>
+               <property name="text">
+                <string>gonghao</string>
+               </property>
+              </widget>
+             </item>
+            </layout>
+           </item>
+          </layout>
+         </widget>
+         <widget class="QStackedWidget" name="stackedWidget_4">
+          <property name="geometry">
+           <rect>
+            <x>20</x>
+            <y>16</y>
+            <width>181</width>
+            <height>171</height>
+           </rect>
+          </property>
+          <property name="currentIndex">
+           <number>0</number>
+          </property>
+          <widget class="QWidget" name="stackedWidget_4Page1">
+           <widget class="QWidget" name="layoutWidget5">
+            <property name="geometry">
+             <rect>
+              <x>0</x>
+              <y>50</y>
+              <width>151</width>
+              <height>31</height>
+             </rect>
+            </property>
+            <layout class="QHBoxLayout" name="horizontalLayout_2">
+             <item>
+              <widget class="QLabel" name="label_2">
+               <property name="styleSheet">
+                <string notr="true">font: 12pt &quot;黑体&quot;;
+color: rgb(248, 248, 255);</string>
+               </property>
+               <property name="text">
+                <string>额    定：</string>
+               </property>
+              </widget>
+             </item>
+             <item>
+              <widget class="QLabel" name="label_lsnum">
+               <property name="styleSheet">
+                <string notr="true">font: 12pt &quot;黑体&quot;;
+color: rgb(248, 248, 255);</string>
+               </property>
+               <property name="text">
+                <string/>
+               </property>
+              </widget>
+             </item>
+            </layout>
+           </widget>
+           <widget class="QWidget" name="layoutWidget4">
+            <property name="geometry">
+             <rect>
+              <x>0</x>
+              <y>90</y>
+              <width>151</width>
+              <height>31</height>
+             </rect>
+            </property>
+            <layout class="QHBoxLayout" name="horizontalLayout_3">
+             <item>
+              <widget class="QLabel" name="label_3">
+               <property name="styleSheet">
+                <string notr="true">font: 12pt &quot;黑体&quot;;
+color: rgb(248, 248, 255);</string>
+               </property>
+               <property name="text">
+                <string>合    格：</string>
+               </property>
+              </widget>
+             </item>
+             <item>
+              <widget class="QLabel" name="label_hege">
+               <property name="styleSheet">
+                <string notr="true">font: 12pt &quot;黑体&quot;;
+color: rgb(248, 248, 255);</string>
+               </property>
+               <property name="text">
+                <string/>
+               </property>
+              </widget>
+             </item>
+            </layout>
+           </widget>
+           <widget class="QWidget" name="layoutWidget">
+            <property name="geometry">
+             <rect>
+              <x>0</x>
+              <y>130</y>
+              <width>151</width>
+              <height>31</height>
+             </rect>
+            </property>
+            <layout class="QHBoxLayout" name="horizontalLayout">
+             <item>
+              <widget class="QLabel" name="label_taotong_name">
+               <property name="styleSheet">
+                <string notr="true">font: 12pt &quot;黑体&quot;;
+color: rgb(248, 248, 255);</string>
+               </property>
+               <property name="text">
+                <string>套筒号：</string>
+               </property>
+              </widget>
+             </item>
+             <item>
+              <widget class="QLabel" name="label_taotong">
+               <property name="styleSheet">
+                <string notr="true">font: 12pt &quot;黑体&quot;;
+color: rgb(248, 248, 255);</string>
+               </property>
+               <property name="text">
+                <string/>
+               </property>
+              </widget>
+             </item>
+            </layout>
+           </widget>
+          </widget>
+          <widget class="QWidget" name="page_7">
+           <widget class="QWidget" name="layoutWidget3">
+            <property name="geometry">
+             <rect>
+              <x>0</x>
+              <y>52</y>
+              <width>151</width>
+              <height>31</height>
+             </rect>
+            </property>
+            <layout class="QHBoxLayout" name="horizontalLayout_6">
+             <item>
+              <widget class="QLabel" name="label_program">
+               <property name="styleSheet">
+                <string notr="true">font: 12pt &quot;黑体&quot;;
+color: rgb(248, 248, 255);</string>
+               </property>
+               <property name="text">
+                <string>当前程序：</string>
+               </property>
+              </widget>
+             </item>
+             <item>
+              <widget class="QLabel" name="label_proNO">
+               <property name="styleSheet">
+                <string notr="true">font: 12pt &quot;黑体&quot;;
+color: rgb(248, 248, 255);</string>
+               </property>
+               <property name="text">
+                <string/>
+               </property>
+              </widget>
+             </item>
+            </layout>
+           </widget>
+           <widget class="QWidget" name="layoutWidget2">
+            <property name="geometry">
+             <rect>
+              <x>0</x>
+              <y>92</y>
+              <width>151</width>
+              <height>31</height>
+             </rect>
+            </property>
+            <layout class="QHBoxLayout" name="horizontalLayout_7">
+             <item>
+              <widget class="QLabel" name="label_uplimit">
+               <property name="styleSheet">
+                <string notr="true">font: 12pt &quot;黑体&quot;;
+color: rgb(248, 248, 255);</string>
+               </property>
+               <property name="text">
+                <string>扭矩上限：</string>
+               </property>
+              </widget>
+             </item>
+             <item>
+              <widget class="QLabel" name="label_UpLimitValue">
+               <property name="styleSheet">
+                <string notr="true">font: 12pt &quot;黑体&quot;;
+color: rgb(248, 248, 255);</string>
+               </property>
+               <property name="text">
+                <string/>
+               </property>
+              </widget>
+             </item>
+            </layout>
+           </widget>
+           <widget class="QWidget" name="layoutWidget1">
+            <property name="geometry">
+             <rect>
+              <x>0</x>
+              <y>131</y>
+              <width>151</width>
+              <height>31</height>
+             </rect>
+            </property>
+            <layout class="QHBoxLayout" name="horizontalLayout_8">
+             <item>
+              <widget class="QLabel" name="label_downlimit">
+               <property name="styleSheet">
+                <string notr="true">font: 12pt &quot;黑体&quot;;
+color: rgb(248, 248, 255);</string>
+               </property>
+               <property name="text">
+                <string>扭矩下限：</string>
+               </property>
+              </widget>
+             </item>
+             <item>
+              <widget class="QLabel" name="label_DownLimitValue">
+               <property name="styleSheet">
+                <string notr="true">font: 12pt &quot;黑体&quot;;
+color: rgb(248, 248, 255);</string>
+               </property>
+               <property name="text">
+                <string/>
+               </property>
+              </widget>
+             </item>
+            </layout>
+           </widget>
+          </widget>
+         </widget>
+         <widget class="QLabel" name="label_7">
+          <property name="geometry">
+           <rect>
+            <x>23</x>
+            <y>377</y>
+            <width>80</width>
+            <height>19</height>
+           </rect>
+          </property>
+          <property name="styleSheet">
+           <string notr="true">font: 12pt &quot;黑体&quot;;
+color: rgb(248, 248, 255);</string>
+          </property>
+          <property name="text">
+           <string>条码模式：</string>
+          </property>
+         </widget>
+         <widget class="QLabel" name="label_8">
+          <property name="geometry">
+           <rect>
+            <x>22</x>
+            <y>460</y>
+            <width>54</width>
+            <height>16</height>
+           </rect>
+          </property>
+          <property name="styleSheet">
+           <string notr="true">font: 12pt &quot;黑体&quot;;
+color: rgb(248, 248, 255);</string>
+          </property>
+          <property name="text">
+           <string>拧紧机</string>
+          </property>
+         </widget>
+         <widget class="QLabel" name="label_ss1">
+          <property name="geometry">
+           <rect>
+            <x>78</x>
+            <y>460</y>
+            <width>16</width>
+            <height>16</height>
+           </rect>
+          </property>
+          <property name="styleSheet">
+           <string notr="true">border-image: url(:/LCD_CS351/LCD_CS351/35_all/69.bmp);</string>
+          </property>
+          <property name="text">
+           <string/>
+          </property>
+         </widget>
+         <widget class="QLabel" name="label_9">
+          <property name="geometry">
+           <rect>
+            <x>105</x>
+            <y>460</y>
+            <width>54</width>
+            <height>16</height>
+           </rect>
+          </property>
+          <property name="styleSheet">
+           <string notr="true">font: 12pt &quot;黑体&quot;;
+color: rgb(248, 248, 255);</string>
+          </property>
+          <property name="text">
+           <string>服务器</string>
+          </property>
+         </widget>
+         <widget class="QLabel" name="label_ss2">
+          <property name="geometry">
+           <rect>
+            <x>159</x>
+            <y>460</y>
+            <width>16</width>
+            <height>16</height>
+           </rect>
+          </property>
+          <property name="styleSheet">
+           <string notr="true">border-image: url(:/LCD_CS351/LCD_CS351/35_all/69.bmp);</string>
+          </property>
+          <property name="text">
+           <string/>
+          </property>
+         </widget>
+         <widget class="QLabel" name="label_10">
+          <property name="geometry">
+           <rect>
+            <x>22</x>
+            <y>500</y>
+            <width>54</width>
+            <height>16</height>
+           </rect>
+          </property>
+          <property name="styleSheet">
+           <string notr="true">font: 12pt &quot;黑体&quot;;
+color: rgb(248, 248, 255);</string>
+          </property>
+          <property name="text">
+           <string>系  统</string>
+          </property>
+         </widget>
+         <widget class="QLabel" name="label_ss3">
+          <property name="geometry">
+           <rect>
+            <x>78</x>
+            <y>500</y>
+            <width>16</width>
+            <height>16</height>
+           </rect>
+          </property>
+          <property name="styleSheet">
+           <string notr="true">border-image: url(:/LCD_CS351/LCD_CS351/35_all/69.bmp);</string>
+          </property>
+          <property name="text">
+           <string/>
+          </property>
+         </widget>
+         <widget class="QLabel" name="label_11">
+          <property name="geometry">
+           <rect>
+            <x>108</x>
+            <y>500</y>
+            <width>54</width>
+            <height>16</height>
+           </rect>
+          </property>
+          <property name="styleSheet">
+           <string notr="true">font: 12pt &quot;黑体&quot;;
+color: rgb(248, 248, 255);</string>
+          </property>
+          <property name="text">
+           <string>RFID </string>
+          </property>
+         </widget>
+         <widget class="QLabel" name="label_ss4">
+          <property name="geometry">
+           <rect>
+            <x>159</x>
+            <y>500</y>
+            <width>16</width>
+            <height>16</height>
+           </rect>
+          </property>
+          <property name="styleSheet">
+           <string notr="true">border-image: url(:/LCD_CS351/LCD_CS351/35_all/69.bmp);</string>
+          </property>
+          <property name="text">
+           <string/>
+          </property>
+         </widget>
+         <widget class="QLabel" name="label_16">
+          <property name="geometry">
+           <rect>
+            <x>23</x>
+            <y>335</y>
+            <width>80</width>
+            <height>19</height>
+           </rect>
+          </property>
+          <property name="styleSheet">
+           <string notr="true">font: 12pt &quot;黑体&quot;;
+color: rgb(248, 248, 255);</string>
+          </property>
+          <property name="text">
+           <string>拧紧模式：</string>
+          </property>
+         </widget>
+         <widget class="QLabel" name="label_tighten">
+          <property name="geometry">
+           <rect>
+            <x>104</x>
+            <y>330</y>
+            <width>88</width>
+            <height>31</height>
+           </rect>
+          </property>
+          <property name="layoutDirection">
+           <enum>Qt::LeftToRight</enum>
+          </property>
+          <property name="styleSheet">
+           <string notr="true">font: 12pt &quot;黑体&quot;;
+color: rgb(248, 248, 255);</string>
+          </property>
+          <property name="text">
+           <string>CS351</string>
+          </property>
+          <property name="alignment">
+           <set>Qt::AlignLeading|Qt::AlignLeft|Qt::AlignVCenter</set>
+          </property>
+         </widget>
+         <widget class="QPushButton" name="pushButton_shutdown">
+          <property name="enabled">
+           <bool>true</bool>
+          </property>
+          <property name="geometry">
+           <rect>
+            <x>60</x>
+            <y>550</y>
+            <width>41</width>
+            <height>41</height>
+           </rect>
+          </property>
+          <property name="focusPolicy">
+           <enum>Qt::NoFocus</enum>
+          </property>
+          <property name="styleSheet">
+           <string notr="true">border-image: url(:/LCD_CS351/LCD_CS351/logo/on_0ff.png);
+color: rgb(248, 248, 255);
+font: 14pt &quot;黑体&quot;;
+
+</string>
+          </property>
+          <property name="text">
+           <string/>
+          </property>
+          <property name="flat">
+           <bool>true</bool>
+          </property>
+         </widget>
+         <widget class="QPushButton" name="pushButton_tiaoma">
+          <property name="geometry">
+           <rect>
+            <x>109</x>
+            <y>361</y>
+            <width>81</width>
+            <height>51</height>
+           </rect>
+          </property>
+          <property name="focusPolicy">
+           <enum>Qt::NoFocus</enum>
+          </property>
+          <property name="styleSheet">
+           <string notr="true">font: 12pt &quot;黑体&quot;;
+color: rgb(248, 248, 255);
+border-image: url(:/LCD_CS351/LCD_CS351/35_all/67.bmp);
+text-align: left;</string>
+          </property>
+          <property name="text">
+           <string>Manual</string>
+          </property>
+          <property name="autoDefault">
+           <bool>true</bool>
+          </property>
+          <property name="flat">
+           <bool>true</bool>
+          </property>
+         </widget>
+         <widget class="QPushButton" name="pushButton_18">
+          <property name="geometry">
+           <rect>
+            <x>10</x>
+            <y>530</y>
+            <width>51</width>
+            <height>51</height>
+           </rect>
+          </property>
+          <property name="focusPolicy">
+           <enum>Qt::NoFocus</enum>
+          </property>
+          <property name="styleSheet">
+           <string notr="true">border-image: url(:/LCD_CS351/LCD_CS351/logo/back2.png);</string>
+          </property>
+          <property name="text">
+           <string/>
+          </property>
+          <property name="autoDefault">
+           <bool>false</bool>
+          </property>
+         </widget>
+         <widget class="QWidget" name="widget_pro" native="true">
+          <property name="geometry">
+           <rect>
+            <x>20</x>
+            <y>32</y>
+            <width>151</width>
+            <height>31</height>
+           </rect>
+          </property>
+          <widget class="QLabel" name="label">
+           <property name="geometry">
+            <rect>
+             <x>0</x>
+             <y>1</y>
+             <width>81</width>
+             <height>29</height>
+            </rect>
+           </property>
+           <property name="styleSheet">
+            <string notr="true">font: 12pt &quot;黑体&quot;;
+color: rgb(248, 248, 255);</string>
+           </property>
+           <property name="text">
+            <string>程 序 号：</string>
+           </property>
+          </widget>
+          <widget class="QLabel" name="label_pronum">
+           <property name="geometry">
+            <rect>
+             <x>80</x>
+             <y>1</y>
+             <width>71</width>
+             <height>29</height>
+            </rect>
+           </property>
+           <property name="styleSheet">
+            <string notr="true">font: 12pt &quot;黑体&quot;;
+color: rgb(248, 248, 255);</string>
+           </property>
+           <property name="text">
+            <string/>
+           </property>
+          </widget>
+         </widget>
+         <widget class="QPushButton" name="pushButton_align">
+          <property name="geometry">
+           <rect>
+            <x>50</x>
+            <y>530</y>
+            <width>51</width>
+            <height>31</height>
+           </rect>
+          </property>
+          <property name="focusPolicy">
+           <enum>Qt::NoFocus</enum>
+          </property>
+          <property name="styleSheet">
+           <string notr="true">border-style: solid;
+font: 14pt &quot;黑体&quot;;
+color: rgb(248, 248, 255);</string>
+          </property>
+          <property name="text">
+           <string>对齐</string>
+          </property>
+          <property name="autoDefault">
+           <bool>true</bool>
+          </property>
+          <property name="flat">
+           <bool>true</bool>
+          </property>
+         </widget>
+         <widget class="QPushButton" name="pushButton_JobOff">
+          <property name="geometry">
+           <rect>
+            <x>107</x>
+            <y>539</y>
+            <width>81</width>
+            <height>31</height>
+           </rect>
+          </property>
+          <property name="focusPolicy">
+           <enum>Qt::NoFocus</enum>
+          </property>
+          <property name="styleSheet">
+           <string notr="true">border-style: solid;
+font: 14pt &quot;黑体&quot;;
+color: rgb(248, 248, 255);</string>
+          </property>
+          <property name="text">
+           <string>Job Off</string>
+          </property>
+          <property name="autoDefault">
+           <bool>true</bool>
+          </property>
+          <property name="flat">
+           <bool>true</bool>
+          </property>
+         </widget>
+         <widget class="QLabel" name="label_card_ss6">
+          <property name="geometry">
+           <rect>
+            <x>160</x>
+            <y>428</y>
+            <width>16</width>
+            <height>16</height>
+           </rect>
+          </property>
+          <property name="styleSheet">
+           <string notr="true">border-image: url(:/LCD_CS351/LCD_CS351/35_all/69.bmp);</string>
+          </property>
+          <property name="text">
+           <string/>
+          </property>
+         </widget>
+         <widget class="QLabel" name="label_card">
+          <property name="geometry">
+           <rect>
+            <x>111</x>
+            <y>420</y>
+            <width>41</width>
+            <height>31</height>
+           </rect>
+          </property>
+          <property name="styleSheet">
+           <string notr="true">font: 12pt &quot;黑体&quot;;
+color: rgb(248, 248, 255);</string>
+          </property>
+          <property name="text">
+           <string>刷  卡</string>
+          </property>
+         </widget>
+         <zorder>label_8</zorder>
+         <zorder>label_ss1</zorder>
+         <zorder>label_9</zorder>
+         <zorder>label_ss2</zorder>
+         <zorder>label_10</zorder>
+         <zorder>label_ss3</zorder>
+         <zorder>label_11</zorder>
+         <zorder>label_ss4</zorder>
+         <zorder>label_7</zorder>
+         <zorder>line_2</zorder>
+         <zorder>line_3</zorder>
+         <zorder>line</zorder>
+         <zorder>pushButton_12</zorder>
+         <zorder>layoutWidget_3</zorder>
+         <zorder>stackedWidget_4</zorder>
+         <zorder>label_16</zorder>
+         <zorder>label_tighten</zorder>
+         <zorder>pushButton_shutdown</zorder>
+         <zorder>pushButton_tiaoma</zorder>
+         <zorder>pushButton_18</zorder>
+         <zorder>widget_pro</zorder>
+         <zorder>pushButton_align</zorder>
+         <zorder>pushButton_JobOff</zorder>
+         <zorder>label_card_ss6</zorder>
+         <zorder>label_card</zorder>
+        </widget>
+        <widget class="QPushButton" name="pushButton_17">
+         <property name="geometry">
+          <rect>
+           <x>210</x>
+           <y>500</y>
+           <width>80</width>
+           <height>30</height>
           </rect>
          </property>
          <property name="focusPolicy">
           <enum>Qt::NoFocus</enum>
+         </property>
+         <property name="styleSheet">
+          <string notr="true">background:transparent;</string>
+         </property>
+         <property name="text">
+          <string>确认一个</string>
+         </property>
+         <property name="flat">
+          <bool>true</bool>
+         </property>
+        </widget>
+        <widget class="QPushButton" name="pushButton_reset">
+         <property name="geometry">
+          <rect>
+           <x>209</x>
+           <y>550</y>
+           <width>80</width>
+           <height>30</height>
+          </rect>
+         </property>
+         <property name="focusPolicy">
+          <enum>Qt::NoFocus</enum>
+         </property>
+         <property name="styleSheet">
+          <string notr="true"/>
+         </property>
+         <property name="text">
+          <string>确认全部</string>
+         </property>
+         <property name="flat">
+          <bool>true</bool>
+         </property>
+        </widget>
+        <widget class="QStackedWidget" name="stackedWidget_2">
+         <property name="geometry">
+          <rect>
+           <x>200</x>
+           <y>0</y>
+           <width>1166</width>
+           <height>598</height>
+          </rect>
+         </property>
+         <property name="styleSheet">
+          <string notr="true">background:transparent;</string>
+         </property>
+         <property name="currentIndex">
+          <number>0</number>
+         </property>
+         <widget class="QWidget" name="page_5">
+          <widget class="QLabel" name="label_pdmarea">
+           <property name="enabled">
+            <bool>false</bool>
+           </property>
+           <property name="geometry">
+            <rect>
+             <x>0</x>
+             <y>0</y>
+             <width>1166</width>
+             <height>598</height>
+            </rect>
+           </property>
+           <property name="layoutDirection">
+            <enum>Qt::RightToLeft</enum>
+           </property>
+           <property name="styleSheet">
+            <string notr="true">border-image: url(:/LCD_CS351/LCD_CS351/DWIN_SET/home_BYD.bmp);</string>
+           </property>
+           <property name="text">
+            <string/>
+           </property>
+           <property name="alignment">
+            <set>Qt::AlignCenter</set>
+           </property>
+          </widget>
+          <widget class="QLabel" name="label_tagPower">
+           <property name="geometry">
+            <rect>
+             <x>870</x>
+             <y>570</y>
+             <width>23</width>
+             <height>23</height>
+            </rect>
+           </property>
+           <property name="styleSheet">
+            <string notr="true">background:transparent;
+border-image: url(:/LCD_CS351/LCD_CS351/logo/lable_1.png);</string>
+           </property>
+           <property name="text">
+            <string/>
+           </property>
+          </widget>
+          <widget class="QPushButton" name="pushButton_location">
+           <property name="geometry">
+            <rect>
+             <x>770</x>
+             <y>564</y>
+             <width>81</width>
+             <height>31</height>
+            </rect>
+           </property>
+           <property name="focusPolicy">
+            <enum>Qt::NoFocus</enum>
+           </property>
+           <property name="layoutDirection">
+            <enum>Qt::RightToLeft</enum>
+           </property>
+           <property name="styleSheet">
+            <string notr="true">font: 14pt &quot;黑体&quot;;</string>
+           </property>
+           <property name="text">
+            <string/>
+           </property>
+           <property name="flat">
+            <bool>true</bool>
+           </property>
+          </widget>
+          <widget class="QLabel" name="labelReplaceStatus">
+           <property name="geometry">
+            <rect>
+             <x>20</x>
+             <y>0</y>
+             <width>1171</width>
+             <height>601</height>
+            </rect>
+           </property>
+           <property name="styleSheet">
+            <string notr="true"/>
+           </property>
+           <property name="text">
+            <string/>
+           </property>
+          </widget>
+          <widget class="QLabel" name="labelQRVerify">
+           <property name="geometry">
+            <rect>
+             <x>590</x>
+             <y>10</y>
+             <width>141</width>
+             <height>61</height>
+            </rect>
+           </property>
+           <property name="styleSheet">
+            <string notr="true">background-color:red;
+color: white;
+font: 20pt &quot;黑体&quot;;</string>
+           </property>
+           <property name="text">
+            <string/>
+           </property>
+           <property name="alignment">
+            <set>Qt::AlignCenter</set>
+           </property>
+          </widget>
+          <widget class="QLineEdit" name="editQueueVin">
+           <property name="geometry">
+            <rect>
+             <x>760</x>
+             <y>10</y>
+             <width>251</width>
+             <height>35</height>
+            </rect>
+           </property>
+           <property name="styleSheet">
+            <string notr="true">font: 14pt &quot;黑体&quot;;
+border-width:1px; 
+border-style:solid; 
+border-color:rgb(51, 153, 255); 
+margin-top: 0ex;
+background-color:white;</string>
+           </property>
+           <property name="text">
+            <string/>
+           </property>
+          </widget>
+          <widget class="QPushButton" name="btnAdjustQueue">
+           <property name="geometry">
+            <rect>
+             <x>1030</x>
+             <y>10</y>
+             <width>120</width>
+             <height>35</height>
+            </rect>
+           </property>
+           <property name="styleSheet">
+            <string notr="true">border-image: url(:/LCD_CS351/LCD_CS351/35_all/67.bmp);
+font: 14pt &quot;黑体&quot;;
+color: rgb(248, 248, 255);</string>
+           </property>
+           <property name="text">
+            <string>校准队列</string>
+           </property>
+          </widget>
+          <widget class="QLabel" name="labelError">
+           <property name="geometry">
+            <rect>
+             <x>800</x>
+             <y>50</y>
+             <width>161</width>
+             <height>16</height>
+            </rect>
+           </property>
+           <property name="styleSheet">
+            <string notr="true">font: 12pt &quot;黑体&quot;;
+color: red;</string>
+           </property>
+           <property name="text">
+            <string>*请输入正确的条码</string>
+           </property>
+          </widget>
+          <widget class="QLabel" name="LabelResult_text">
+           <property name="geometry">
+            <rect>
+             <x>71</x>
+             <y>10</y>
+             <width>331</width>
+             <height>56</height>
+            </rect>
+           </property>
+           <property name="styleSheet">
+            <string notr="true">font: 18pt &quot;黑体&quot;;</string>
+           </property>
+           <property name="text">
+            <string>第1颗螺栓 高风险</string>
+           </property>
+          </widget>
+          <widget class="QLabel" name="LabelResult_color">
+           <property name="geometry">
+            <rect>
+             <x>10</x>
+             <y>10</y>
+             <width>56</width>
+             <height>56</height>
+            </rect>
+           </property>
+           <property name="styleSheet">
+            <string notr="true">background-color: rgb(255, 0, 0);</string>
+           </property>
+           <property name="text">
+            <string/>
+           </property>
+          </widget>
+          <zorder>label_pdmarea</zorder>
+          <zorder>pushButton_location</zorder>
+          <zorder>labelReplaceStatus</zorder>
+          <zorder>label_tagPower</zorder>
+          <zorder>labelQRVerify</zorder>
+          <zorder>editQueueVin</zorder>
+          <zorder>btnAdjustQueue</zorder>
+          <zorder>labelError</zorder>
+          <zorder>LabelResult_text</zorder>
+          <zorder>LabelResult_color</zorder>
+         </widget>
+         <widget class="QWidget" name="page_6">
+          <property name="styleSheet">
+           <string notr="true"/>
+          </property>
+         </widget>
+        </widget>
+        <widget class="QLabel" name="label_battery">
+         <property name="geometry">
+          <rect>
+           <x>1138</x>
+           <y>574</y>
+           <width>28</width>
+           <height>14</height>
+          </rect>
          </property>
          <property name="styleSheet">
           <string notr="true">background:transparent;
-border-image: url(:/LCD_CS351/LCD_CS351/35_all/logo.bmp);
-</string>
-         </property>
-         <property name="text">
-          <string/>
-         </property>
-         <property name="flat">
-          <bool>true</bool>
-         </property>
-        </widget>
-        <widget class="Line" name="line_2">
-         <property name="geometry">
-          <rect>
-           <x>21</x>
-           <y>204</y>
-           <width>160</width>
-           <height>5</height>
-          </rect>
-         </property>
-         <property name="autoFillBackground">
-          <bool>false</bool>
-         </property>
-         <property name="styleSheet">
-          <string notr="true">border-image: url(:/LCD_CS351/LCD_CS351/logo/line.bmp);
-background:transparent;</string>
-         </property>
-         <property name="midLineWidth">
-          <number>0</number>
-         </property>
-         <property name="orientation">
-          <enum>Qt::Horizontal</enum>
-         </property>
-        </widget>
-        <widget class="Line" name="line_3">
-         <property name="geometry">
-          <rect>
-           <x>20</x>
-           <y>311</y>
-           <width>160</width>
-           <height>5</height>
-          </rect>
-         </property>
-         <property name="styleSheet">
-          <string notr="true">border-image: url(:/LCD_CS351/LCD_CS351/logo/line.bmp);
-background:transparent;</string>
-         </property>
-         <property name="orientation">
-          <enum>Qt::Horizontal</enum>
-         </property>
-        </widget>
-        <widget class="Line" name="line">
-         <property name="geometry">
-          <rect>
-           <x>20</x>
-           <y>417</y>
-           <width>160</width>
-           <height>5</height>
-          </rect>
-         </property>
-         <property name="styleSheet">
-          <string notr="true">border-image: url(:/LCD_CS351/LCD_CS351/logo/line.bmp);
-background:transparent;</string>
-         </property>
-         <property name="orientation">
-          <enum>Qt::Horizontal</enum>
-         </property>
-        </widget>
-        <widget class="QPushButton" name="pushButton_12">
-         <property name="enabled">
-          <bool>true</bool>
-         </property>
-         <property name="geometry">
-          <rect>
-           <x>114</x>
-           <y>522</y>
-           <width>51</width>
-           <height>51</height>
-          </rect>
-         </property>
-         <property name="focusPolicy">
-          <enum>Qt::NoFocus</enum>
-         </property>
-         <property name="styleSheet">
-          <string notr="true">border-image: url(:/re/settings.png);
-color: rgb(248, 248, 255);
-font: 14pt &quot;黑体&quot;;
-
-</string>
-         </property>
-         <property name="text">
-          <string/>
-         </property>
-         <property name="flat">
-          <bool>true</bool>
-         </property>
-        </widget>
-        <widget class="QWidget" name="layoutWidget_3">
-         <property name="geometry">
-          <rect>
-           <x>20</x>
-           <y>224</y>
-           <width>161</width>
-           <height>71</height>
-          </rect>
-         </property>
-         <layout class="QVBoxLayout" name="verticalLayout_2">
-          <item>
-           <layout class="QHBoxLayout" name="horizontalLayout_4">
-            <item>
-             <widget class="QLabel" name="label_4">
-              <property name="styleSheet">
-               <string notr="true">font: 12pt &quot;黑体&quot;;
-color: rgb(248, 248, 255);</string>
-              </property>
-              <property name="text">
-               <string>工    段：</string>
-              </property>
-             </widget>
-            </item>
-            <item>
-             <widget class="QLabel" name="label_gongwei">
-              <property name="styleSheet">
-               <string notr="true">font: 12pt &quot;黑体&quot;;
-color: rgb(248, 248, 255);</string>
-              </property>
-              <property name="text">
-               <string>ba0</string>
-              </property>
-             </widget>
-            </item>
-           </layout>
-          </item>
-          <item>
-           <layout class="QHBoxLayout" name="horizontalLayout_5">
-            <item>
-             <widget class="QLabel" name="label_5">
-              <property name="styleSheet">
-               <string notr="true">font: 12pt &quot;黑体&quot;;
-color: rgb(248, 248, 255);</string>
-              </property>
-              <property name="text">
-               <string>工    位：</string>
-              </property>
-             </widget>
-            </item>
-            <item>
-             <widget class="QLabel" name="label_gonghao">
-              <property name="styleSheet">
-               <string notr="true">font: 12pt &quot;黑体&quot;;
-color: rgb(248, 248, 255);</string>
-              </property>
-              <property name="text">
-               <string>gonghao</string>
-              </property>
-             </widget>
-            </item>
-           </layout>
-          </item>
-         </layout>
-        </widget>
-        <widget class="QWidget" name="layoutWidget_4">
-         <property name="geometry">
-          <rect>
-           <x>20</x>
-           <y>90</y>
-           <width>161</width>
-           <height>101</height>
-          </rect>
-         </property>
-         <layout class="QVBoxLayout" name="verticalLayout">
-          <item>
-           <layout class="QHBoxLayout" name="horizontalLayout">
-            <item>
-             <widget class="QLabel" name="label">
-              <property name="styleSheet">
-               <string notr="true">font: 12pt &quot;黑体&quot;;
-color: rgb(248, 248, 255);</string>
-              </property>
-              <property name="text">
-               <string>程 序 号：</string>
-              </property>
-             </widget>
-            </item>
-            <item>
-             <widget class="QLabel" name="label_pronum">
-              <property name="styleSheet">
-               <string notr="true">font: 12pt &quot;黑体&quot;;
-color: rgb(248, 248, 255);</string>
-              </property>
-              <property name="text">
-               <string/>
-              </property>
-             </widget>
-            </item>
-           </layout>
-          </item>
-          <item>
-           <layout class="QHBoxLayout" name="horizontalLayout_2">
-            <item>
-             <widget class="QLabel" name="label_2">
-              <property name="styleSheet">
-               <string notr="true">font: 12pt &quot;黑体&quot;;
-color: rgb(248, 248, 255);</string>
-              </property>
-              <property name="text">
-               <string>额    定：</string>
-              </property>
-             </widget>
-            </item>
-            <item>
-             <widget class="QLabel" name="label_lsnum">
-              <property name="styleSheet">
-               <string notr="true">font: 12pt &quot;黑体&quot;;
-color: rgb(248, 248, 255);</string>
-              </property>
-              <property name="text">
-               <string/>
-              </property>
-             </widget>
-            </item>
-           </layout>
-          </item>
-          <item>
-           <layout class="QHBoxLayout" name="horizontalLayout_3">
-            <item>
-             <widget class="QLabel" name="label_3">
-              <property name="styleSheet">
-               <string notr="true">font: 12pt &quot;黑体&quot;;
-color: rgb(248, 248, 255);</string>
-              </property>
-              <property name="text">
-               <string>合    格：</string>
-              </property>
-             </widget>
-            </item>
-            <item>
-             <widget class="QLabel" name="label_hege">
-              <property name="styleSheet">
-               <string notr="true">font: 12pt &quot;黑体&quot;;
-color: rgb(248, 248, 255);</string>
-              </property>
-              <property name="text">
-               <string/>
-              </property>
-             </widget>
-            </item>
-           </layout>
-          </item>
-         </layout>
-        </widget>
-        <widget class="QLabel" name="label_7">
-         <property name="geometry">
-          <rect>
-           <x>23</x>
-           <y>377</y>
-           <width>80</width>
-           <height>19</height>
-          </rect>
-         </property>
-         <property name="styleSheet">
-          <string notr="true">font: 12pt &quot;黑体&quot;;
-color: rgb(248, 248, 255);</string>
-         </property>
-         <property name="text">
-          <string>条码模式：</string>
-         </property>
-        </widget>
-        <widget class="QLabel" name="label_tiaoma">
-         <property name="geometry">
-          <rect>
-           <x>109</x>
-           <y>376</y>
-           <width>51</width>
-           <height>19</height>
-          </rect>
-         </property>
-         <property name="styleSheet">
-          <string notr="true">font: 12pt &quot;黑体&quot;;
-color: rgb(248, 248, 255);</string>
-         </property>
-         <property name="text">
-          <string>weihu</string>
-         </property>
-        </widget>
-        <widget class="QLabel" name="label_8">
-         <property name="geometry">
-          <rect>
-           <x>22</x>
-           <y>442</y>
-           <width>48</width>
-           <height>16</height>
-          </rect>
-         </property>
-         <property name="styleSheet">
-          <string notr="true">font: 12pt &quot;黑体&quot;;
-color: rgb(248, 248, 255);</string>
-         </property>
-         <property name="text">
-          <string>拧紧机</string>
-         </property>
-        </widget>
-        <widget class="QLabel" name="label_ss1">
-         <property name="geometry">
-          <rect>
-           <x>78</x>
-           <y>442</y>
-           <width>16</width>
-           <height>16</height>
-          </rect>
-         </property>
-         <property name="styleSheet">
-          <string notr="true">border-image: url(:/LCD_CS351/LCD_CS351/35_all/69.bmp);</string>
-         </property>
-         <property name="text">
-          <string/>
-         </property>
-        </widget>
-        <widget class="QLabel" name="label_9">
-         <property name="geometry">
-          <rect>
-           <x>105</x>
-           <y>442</y>
-           <width>48</width>
-           <height>16</height>
-          </rect>
-         </property>
-         <property name="styleSheet">
-          <string notr="true">font: 12pt &quot;黑体&quot;;
-color: rgb(248, 248, 255);</string>
-         </property>
-         <property name="text">
-          <string>服务器</string>
-         </property>
-        </widget>
-        <widget class="QLabel" name="label_ss2">
-         <property name="geometry">
-          <rect>
-           <x>159</x>
-           <y>442</y>
-           <width>16</width>
-           <height>16</height>
-          </rect>
-         </property>
-         <property name="styleSheet">
-          <string notr="true">border-image: url(:/LCD_CS351/LCD_CS351/35_all/69.bmp);</string>
-         </property>
-         <property name="text">
-          <string/>
-         </property>
-        </widget>
-        <widget class="QLabel" name="label_10">
-         <property name="geometry">
-          <rect>
-           <x>22</x>
-           <y>482</y>
-           <width>51</width>
-           <height>16</height>
-          </rect>
-         </property>
-         <property name="styleSheet">
-          <string notr="true">font: 12pt &quot;黑体&quot;;
-color: rgb(248, 248, 255);</string>
-         </property>
-         <property name="text">
-          <string>系  统</string>
-         </property>
-        </widget>
-        <widget class="QLabel" name="label_ss3">
-         <property name="geometry">
-          <rect>
-           <x>78</x>
-           <y>482</y>
-           <width>16</width>
-           <height>16</height>
-          </rect>
-         </property>
-         <property name="styleSheet">
-          <string notr="true">border-image: url(:/LCD_CS351/LCD_CS351/35_all/69.bmp);</string>
-         </property>
-         <property name="text">
-          <string/>
-         </property>
-        </widget>
-        <widget class="QLabel" name="label_11">
-         <property name="geometry">
-          <rect>
-           <x>108</x>
-           <y>482</y>
-           <width>40</width>
-           <height>16</height>
-          </rect>
-         </property>
-         <property name="styleSheet">
-          <string notr="true">font: 12pt &quot;黑体&quot;;
-color: rgb(248, 248, 255);</string>
-         </property>
-         <property name="text">
-          <string>RFID </string>
-         </property>
-        </widget>
-        <widget class="QLabel" name="label_ss4">
-         <property name="geometry">
-          <rect>
-           <x>159</x>
-           <y>482</y>
-           <width>16</width>
-           <height>16</height>
-          </rect>
-         </property>
-         <property name="styleSheet">
-          <string notr="true">border-image: url(:/LCD_CS351/LCD_CS351/35_all/69.bmp);</string>
-         </property>
-         <property name="text">
-          <string/>
-         </property>
-        </widget>
-        <widget class="QLabel" name="label_16">
-         <property name="geometry">
-          <rect>
-           <x>23</x>
-           <y>335</y>
-           <width>80</width>
-           <height>19</height>
-          </rect>
-         </property>
-         <property name="styleSheet">
-          <string notr="true">font: 12pt &quot;黑体&quot;;
-color: rgb(248, 248, 255);</string>
-         </property>
-         <property name="text">
-          <string>拧紧模式：</string>
-         </property>
-        </widget>
-        <widget class="QLabel" name="label_tighten">
-         <property name="geometry">
-          <rect>
-           <x>109</x>
-           <y>335</y>
-           <width>51</width>
-           <height>19</height>
-          </rect>
-         </property>
-         <property name="styleSheet">
-          <string notr="true">font: 12pt &quot;黑体&quot;;
-color: rgb(248, 248, 255);</string>
-         </property>
-         <property name="text">
-          <string>CS351</string>
-         </property>
-        </widget>
-        <widget class="QPushButton" name="pushButton_shutdown">
-         <property name="enabled">
-          <bool>true</bool>
-         </property>
-         <property name="geometry">
-          <rect>
-           <x>30</x>
-           <y>529</y>
-           <width>41</width>
-           <height>41</height>
-          </rect>
-         </property>
-         <property name="focusPolicy">
-          <enum>Qt::NoFocus</enum>
-         </property>
-         <property name="styleSheet">
-          <string notr="true">border-image: url(:/LCD_CS351/LCD_CS351/logo/on_0ff.png);
-color: rgb(248, 248, 255);
-font: 14pt &quot;黑体&quot;;
-
-</string>
-         </property>
-         <property name="text">
-          <string/>
-         </property>
-         <property name="flat">
-          <bool>true</bool>
-         </property>
-        </widget>
-        <zorder>label_8</zorder>
-        <zorder>label_ss1</zorder>
-        <zorder>label_9</zorder>
-        <zorder>label_ss2</zorder>
-        <zorder>label_10</zorder>
-        <zorder>label_ss3</zorder>
-        <zorder>label_11</zorder>
-        <zorder>label_ss4</zorder>
-        <zorder>label_7</zorder>
-        <zorder>label_tiaoma</zorder>
-        <zorder>pushButton_10</zorder>
-        <zorder>line_2</zorder>
-        <zorder>line_3</zorder>
-        <zorder>line</zorder>
-        <zorder>pushButton_12</zorder>
-        <zorder>layoutWidget_3</zorder>
-        <zorder>layoutWidget_4</zorder>
-        <zorder>label_16</zorder>
-        <zorder>label_tighten</zorder>
-        <zorder>pushButton_shutdown</zorder>
-       </widget>
-       <widget class="QLabel" name="label_18">
-        <property name="geometry">
-         <rect>
-          <x>460</x>
-          <y>81</y>
-          <width>25</width>
-          <height>16</height>
-         </rect>
-        </property>
-        <property name="styleSheet">
-         <string notr="true">background:transparent;</string>
-        </property>
-        <property name="text">
-         <string>角度</string>
-        </property>
-       </widget>
-       <widget class="QLabel" name="label_15">
-        <property name="geometry">
-         <rect>
-          <x>350</x>
-          <y>81</y>
-          <width>25</width>
-          <height>16</height>
-         </rect>
-        </property>
-        <property name="styleSheet">
-         <string notr="true">background:transparent;</string>
-        </property>
-        <property name="text">
-         <string>扭矩</string>
-        </property>
-       </widget>
-       <widget class="QLabel" name="label_ceshipronum">
-        <property name="geometry">
-         <rect>
-          <x>250</x>
-          <y>80</y>
-          <width>51</width>
-          <height>21</height>
-         </rect>
-        </property>
-        <property name="styleSheet">
-         <string notr="true">background:transparent;</string>
-        </property>
-        <property name="text">
-         <string/>
-        </property>
-       </widget>
-       <widget class="QLabel" name="label_pdmarea">
-        <property name="enabled">
-         <bool>false</bool>
-        </property>
-        <property name="geometry">
-         <rect>
-          <x>200</x>
-          <y>0</y>
-          <width>1166</width>
-          <height>598</height>
-         </rect>
-        </property>
-        <property name="styleSheet">
-         <string notr="true">border-image: url(:/LCD_CS351/LCD_CS351/DWIN_SET/home.bmp);</string>
-        </property>
-        <property name="text">
-         <string/>
-        </property>
-       </widget>
-       <widget class="QLabel" name="label_ceshiniuju">
-        <property name="geometry">
-         <rect>
-          <x>400</x>
-          <y>81</y>
-          <width>51</width>
-          <height>16</height>
-         </rect>
-        </property>
-        <property name="styleSheet">
-         <string notr="true">background:transparent;</string>
-        </property>
-        <property name="text">
-         <string/>
-        </property>
-       </widget>
-       <widget class="QLabel" name="label_ceshijiaodu">
-        <property name="geometry">
-         <rect>
-          <x>505</x>
-          <y>81</y>
-          <width>81</width>
-          <height>16</height>
-         </rect>
-        </property>
-        <property name="styleSheet">
-         <string notr="true">background:transparent;</string>
-        </property>
-        <property name="text">
-         <string/>
-        </property>
-       </widget>
-       <widget class="QPushButton" name="pushButton_17">
-        <property name="geometry">
-         <rect>
-          <x>210</x>
-          <y>500</y>
-          <width>80</width>
-          <height>30</height>
-         </rect>
-        </property>
-        <property name="focusPolicy">
-         <enum>Qt::NoFocus</enum>
-        </property>
-        <property name="styleSheet">
-         <string notr="true">background:transparent;</string>
-        </property>
-        <property name="text">
-         <string>确认一个</string>
-        </property>
-        <property name="flat">
-         <bool>true</bool>
-        </property>
-       </widget>
-       <widget class="QPushButton" name="pushButton_reset">
-        <property name="geometry">
-         <rect>
-          <x>209</x>
-          <y>550</y>
-          <width>80</width>
-          <height>30</height>
-         </rect>
-        </property>
-        <property name="focusPolicy">
-         <enum>Qt::NoFocus</enum>
-        </property>
-        <property name="styleSheet">
-         <string notr="true"/>
-        </property>
-        <property name="text">
-         <string>确认全部</string>
-        </property>
-        <property name="flat">
-         <bool>true</bool>
-        </property>
-       </widget>
-       <widget class="QLabel" name="label_battery">
-        <property name="geometry">
-         <rect>
-          <x>1148</x>
-          <y>574</y>
-          <width>28</width>
-          <height>14</height>
-         </rect>
-        </property>
-        <property name="styleSheet">
-         <string notr="true">background:transparent;
 border-image: url(:/LCD_CS351/LCD_CS351/logo/battery.png);</string>
-        </property>
-        <property name="text">
-         <string/>
-        </property>
-       </widget>
-       <widget class="QLabel" name="label_wifi">
-        <property name="geometry">
-         <rect>
-          <x>1110</x>
-          <y>573</y>
-          <width>23</width>
-          <height>18</height>
-         </rect>
-        </property>
-        <property name="styleSheet">
-         <string notr="true">background:transparent;
+         </property>
+         <property name="text">
+          <string/>
+         </property>
+        </widget>
+        <widget class="QLabel" name="label_12">
+         <property name="geometry">
+          <rect>
+           <x>1179</x>
+           <y>570</y>
+           <width>171</width>
+           <height>21</height>
+          </rect>
+         </property>
+         <property name="styleSheet">
+          <string notr="true">background:transparent;
+color: rgb(51, 153, 255);
+font: 12pt &quot;黑体&quot;;</string>
+         </property>
+         <property name="text">
+          <string/>
+         </property>
+        </widget>
+        <widget class="QLabel" name="label_wifi">
+         <property name="geometry">
+          <rect>
+           <x>1100</x>
+           <y>573</y>
+           <width>23</width>
+           <height>18</height>
+          </rect>
+         </property>
+         <property name="styleSheet">
+          <string notr="true">background:transparent;
 border-image: url(:/LCD_CS351/LCD_CS351/logo/wifi.png);</string>
-        </property>
-        <property name="text">
-         <string/>
-        </property>
+         </property>
+         <property name="text">
+          <string/>
+         </property>
+        </widget>
+        <zorder>widget</zorder>
+        <zorder>stackedWidget_2</zorder>
+        <zorder>label_12</zorder>
+        <zorder>pushButton_17</zorder>
+        <zorder>pushButton_reset</zorder>
+        <zorder>label_wifi</zorder>
+        <zorder>label_battery</zorder>
        </widget>
-       <widget class="QLabel" name="label_12">
-        <property name="geometry">
-         <rect>
-          <x>1189</x>
-          <y>570</y>
-          <width>171</width>
-          <height>21</height>
-         </rect>
-        </property>
-        <property name="styleSheet">
-         <string notr="true">background:transparent;
-color: rgb(51, 153, 255);</string>
-        </property>
-        <property name="text">
-         <string/>
-        </property>
+       <widget class="QWidget" name="page_4">
+        <widget class="QWidget" name="widget_left" native="true">
+         <property name="geometry">
+          <rect>
+           <x>0</x>
+           <y>125</y>
+           <width>683</width>
+           <height>350</height>
+          </rect>
+         </property>
+         <property name="styleSheet">
+          <string notr="true">background:transparent;</string>
+         </property>
+         <widget class="QLabel" name="label_left">
+          <property name="geometry">
+           <rect>
+            <x>0</x>
+            <y>0</y>
+            <width>683</width>
+            <height>350</height>
+           </rect>
+          </property>
+          <property name="styleSheet">
+           <string notr="true">image: url(:/LCD_CS351/LCD_CS351/DWIN_SET/home_VW.bmp);</string>
+          </property>
+          <property name="text">
+           <string/>
+          </property>
+         </widget>
+        </widget>
+        <widget class="QWidget" name="widget_right" native="true">
+         <property name="geometry">
+          <rect>
+           <x>683</x>
+           <y>125</y>
+           <width>683</width>
+           <height>350</height>
+          </rect>
+         </property>
+         <property name="styleSheet">
+          <string notr="true">background:transparent;</string>
+         </property>
+         <widget class="QLabel" name="label_right">
+          <property name="geometry">
+           <rect>
+            <x>0</x>
+            <y>0</y>
+            <width>683</width>
+            <height>350</height>
+           </rect>
+          </property>
+          <property name="styleSheet">
+           <string notr="true">image: url(:/LCD_CS351/LCD_CS351/DWIN_SET/home_VW.bmp);</string>
+          </property>
+          <property name="text">
+           <string/>
+          </property>
+         </widget>
+        </widget>
+        <widget class="Line" name="line_5">
+         <property name="geometry">
+          <rect>
+           <x>681</x>
+           <y>0</y>
+           <width>1</width>
+           <height>598</height>
+          </rect>
+         </property>
+         <property name="styleSheet">
+          <string notr="true">border: 1px solid  rgb(51, 153, 255);</string>
+         </property>
+         <property name="orientation">
+          <enum>Qt::Vertical</enum>
+         </property>
+        </widget>
+        <widget class="QWidget" name="widget_7" native="true">
+         <property name="geometry">
+          <rect>
+           <x>0</x>
+           <y>558</y>
+           <width>1366</width>
+           <height>40</height>
+          </rect>
+         </property>
+         <property name="styleSheet">
+          <string notr="true">background-color: rgb(51,153,255);</string>
+         </property>
+         <widget class="QLabel" name="label_ss4_2">
+          <property name="geometry">
+           <rect>
+            <x>456</x>
+            <y>12</y>
+            <width>16</width>
+            <height>16</height>
+           </rect>
+          </property>
+          <property name="styleSheet">
+           <string notr="true">border-image: url(:/LCD_CS351/LCD_CS351/35_all/69.bmp);</string>
+          </property>
+          <property name="text">
+           <string/>
+          </property>
+         </widget>
+         <widget class="QLabel" name="label_ss12">
+          <property name="geometry">
+           <rect>
+            <x>268</x>
+            <y>12</y>
+            <width>16</width>
+            <height>16</height>
+           </rect>
+          </property>
+          <property name="styleSheet">
+           <string notr="true">border-image: url(:/LCD_CS351/LCD_CS351/35_all/69.bmp);</string>
+          </property>
+          <property name="text">
+           <string/>
+          </property>
+         </widget>
+         <widget class="QLabel" name="label_13">
+          <property name="geometry">
+           <rect>
+            <x>392</x>
+            <y>10</y>
+            <width>60</width>
+            <height>20</height>
+           </rect>
+          </property>
+          <property name="styleSheet">
+           <string notr="true">font: 12pt &quot;黑体&quot;;
+color: rgb(248,248,255);</string>
+          </property>
+          <property name="text">
+           <string>RFID </string>
+          </property>
+          <property name="alignment">
+           <set>Qt::AlignCenter</set>
+          </property>
+         </widget>
+         <widget class="QLabel" name="label_20">
+          <property name="geometry">
+           <rect>
+            <x>204</x>
+            <y>10</y>
+            <width>60</width>
+            <height>20</height>
+           </rect>
+          </property>
+          <property name="styleSheet">
+           <string notr="true">font: 12pt &quot;黑体&quot;;
+color: rgb(248,248,255);</string>
+          </property>
+          <property name="text">
+           <string>拧紧机2</string>
+          </property>
+          <property name="alignment">
+           <set>Qt::AlignCenter</set>
+          </property>
+         </widget>
+         <widget class="QLabel" name="label_19">
+          <property name="geometry">
+           <rect>
+            <x>298</x>
+            <y>10</y>
+            <width>60</width>
+            <height>20</height>
+           </rect>
+          </property>
+          <property name="styleSheet">
+           <string notr="true">font: 12pt &quot;黑体&quot;;
+color: rgb(248,248,255);</string>
+          </property>
+          <property name="text">
+           <string>服务器</string>
+          </property>
+          <property name="alignment">
+           <set>Qt::AlignCenter</set>
+          </property>
+         </widget>
+         <widget class="QLabel" name="label_21">
+          <property name="geometry">
+           <rect>
+            <x>110</x>
+            <y>10</y>
+            <width>60</width>
+            <height>20</height>
+           </rect>
+          </property>
+          <property name="styleSheet">
+           <string notr="true">font: 12pt &quot;黑体&quot;;
+color: rgb(248,248,255);</string>
+          </property>
+          <property name="text">
+           <string>拧紧机1</string>
+          </property>
+          <property name="alignment">
+           <set>Qt::AlignCenter</set>
+          </property>
+         </widget>
+         <widget class="QLabel" name="label_ss2_2">
+          <property name="geometry">
+           <rect>
+            <x>362</x>
+            <y>12</y>
+            <width>16</width>
+            <height>16</height>
+           </rect>
+          </property>
+          <property name="styleSheet">
+           <string notr="true">border-image: url(:/LCD_CS351/LCD_CS351/35_all/69.bmp);</string>
+          </property>
+          <property name="text">
+           <string/>
+          </property>
+         </widget>
+         <widget class="QLabel" name="label_ss11">
+          <property name="geometry">
+           <rect>
+            <x>174</x>
+            <y>12</y>
+            <width>16</width>
+            <height>16</height>
+           </rect>
+          </property>
+          <property name="styleSheet">
+           <string notr="true">border-image: url(:/LCD_CS351/LCD_CS351/35_all/69.bmp);</string>
+          </property>
+          <property name="text">
+           <string/>
+          </property>
+         </widget>
+         <widget class="QPushButton" name="pushButton_11">
+          <property name="geometry">
+           <rect>
+            <x>0</x>
+            <y>0</y>
+            <width>40</width>
+            <height>40</height>
+           </rect>
+          </property>
+          <property name="focusPolicy">
+           <enum>Qt::NoFocus</enum>
+          </property>
+          <property name="styleSheet">
+           <string notr="true">background:transparent;
+border-image: url(:/LCD_CS351/LCD_CS351/logo/back2.png);</string>
+          </property>
+          <property name="text">
+           <string/>
+          </property>
+         </widget>
+         <widget class="QLabel" name="label_clock_2">
+          <property name="geometry">
+           <rect>
+            <x>1184</x>
+            <y>10</y>
+            <width>171</width>
+            <height>21</height>
+           </rect>
+          </property>
+          <property name="styleSheet">
+           <string notr="true">background:transparent;
+color: rgb(248,248,255);
+font: 12pt &quot;黑体&quot;;</string>
+          </property>
+          <property name="text">
+           <string/>
+          </property>
+         </widget>
+         <widget class="QLabel" name="label_battery_2">
+          <property name="geometry">
+           <rect>
+            <x>1143</x>
+            <y>14</y>
+            <width>28</width>
+            <height>14</height>
+           </rect>
+          </property>
+          <property name="styleSheet">
+           <string notr="true">background:transparent;
+border-image: url(:/LCD_CS351/LCD_CS351/logo/battery.png);</string>
+          </property>
+          <property name="text">
+           <string/>
+          </property>
+         </widget>
+         <widget class="QLabel" name="label_wifi_2">
+          <property name="geometry">
+           <rect>
+            <x>1105</x>
+            <y>13</y>
+            <width>23</width>
+            <height>18</height>
+           </rect>
+          </property>
+          <property name="styleSheet">
+           <string notr="true">background:transparent;
+border-image: url(:/LCD_CS351/LCD_CS351/logo/wifi_white.png);</string>
+          </property>
+          <property name="text">
+           <string/>
+          </property>
+         </widget>
+         <widget class="QLabel" name="label_ss3_2">
+          <property name="geometry">
+           <rect>
+            <x>550</x>
+            <y>12</y>
+            <width>16</width>
+            <height>16</height>
+           </rect>
+          </property>
+          <property name="styleSheet">
+           <string notr="true">border-image: url(:/LCD_CS351/LCD_CS351/35_all/69.bmp);</string>
+          </property>
+          <property name="text">
+           <string/>
+          </property>
+         </widget>
+         <widget class="QLabel" name="label_14">
+          <property name="geometry">
+           <rect>
+            <x>486</x>
+            <y>10</y>
+            <width>60</width>
+            <height>20</height>
+           </rect>
+          </property>
+          <property name="styleSheet">
+           <string notr="true">font: 12pt &quot;黑体&quot;;
+color: rgb(248,248,255);</string>
+          </property>
+          <property name="text">
+           <string>PLUS</string>
+          </property>
+          <property name="alignment">
+           <set>Qt::AlignCenter</set>
+          </property>
+         </widget>
+        </widget>
        </widget>
       </widget>
-      <widget class="QWidget" name="page_4">
-       <widget class="QPushButton" name="pushButton_18">
-        <property name="geometry">
-         <rect>
-          <x>0</x>
-          <y>520</y>
-          <width>74</width>
-          <height>80</height>
-         </rect>
-        </property>
-        <property name="focusPolicy">
-         <enum>Qt::NoFocus</enum>
-        </property>
-        <property name="styleSheet">
-         <string notr="true">background : transparent;
-border-image: url(:/re/go.png);</string>
-        </property>
-        <property name="text">
-         <string/>
-        </property>
-        <property name="flat">
-         <bool>true</bool>
-        </property>
-       </widget>
-       <widget class="QLabel" name="label_13">
-        <property name="geometry">
-         <rect>
-          <x>0</x>
-          <y>0</y>
-          <width>1366</width>
-          <height>600</height>
-         </rect>
-        </property>
-        <property name="styleSheet">
-         <string notr="true">border-image: url(:/LCD_CS351/LCD_CS351/DWIN_SET/mainlogo.png);</string>
-        </property>
-        <property name="text">
-         <string/>
-        </property>
-       </widget>
-       <widget class="QLabel" name="label_14">
-        <property name="geometry">
-         <rect>
-          <x>1180</x>
-          <y>570</y>
-          <width>171</width>
-          <height>21</height>
-         </rect>
-        </property>
-        <property name="styleSheet">
-         <string notr="true">background:transparent;
-color: rgb(248, 248, 255);</string>
-        </property>
-        <property name="text">
-         <string/>
-        </property>
-       </widget>
-       <widget class="QLabel" name="label_wifi_2">
-        <property name="geometry">
-         <rect>
-          <x>1103</x>
-          <y>560</y>
-          <width>41</width>
-          <height>31</height>
-         </rect>
-        </property>
-        <property name="styleSheet">
-         <string notr="true">background:transparent;</string>
-        </property>
-        <property name="text">
-         <string/>
-        </property>
-       </widget>
-       <zorder>label_13</zorder>
-       <zorder>pushButton_18</zorder>
-       <zorder>label_14</zorder>
-       <zorder>label_wifi_2</zorder>
-      </widget>
      </widget>
-     <widget class="QLabel" name="label_black">
-      <property name="geometry">
-       <rect>
-        <x>1310</x>
-        <y>620</y>
-        <width>58</width>
-        <height>15</height>
-       </rect>
-      </property>
-      <property name="styleSheet">
-       <string notr="true">background-color: rgb(0, 0, 0);</string>
-      </property>
-      <property name="text">
-       <string/>
-      </property>
-     </widget>
-     <zorder>stackedWidget_6</zorder>
-     <zorder>pushButton_16</zorder>
-     <zorder>widget_2</zorder>
-     <zorder>label_black</zorder>
     </widget>
     <widget class="QWidget" name="page_3">
      <widget class="QWidget" name="widget_3" native="true">
@@ -1604,6 +2332,22 @@ background : transparent;</string>
       </widget>
      </widget>
     </widget>
+   </widget>
+   <widget class="QLabel" name="label_black">
+    <property name="geometry">
+     <rect>
+      <x>1340</x>
+      <y>340</y>
+      <width>58</width>
+      <height>15</height>
+     </rect>
+    </property>
+    <property name="styleSheet">
+     <string notr="true">background-color: rgb(0, 0, 0);</string>
+    </property>
+    <property name="text">
+     <string/>
+    </property>
    </widget>
   </widget>
  </widget>

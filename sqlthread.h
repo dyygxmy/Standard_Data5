@@ -7,8 +7,8 @@
 #include <QSqlError>
 #include <QSqlQuery>
 #include <QDateTime>
-#include "GlobalVarible.h"
 #include <QThread>
+#include "GlobalVarible.h"
 class SqlThread : public QObject
 {
     Q_OBJECT
@@ -19,16 +19,19 @@ public slots:
     void sqlinit();
     void mysqlopen();
     void sqlclose();
-    void sqlinsert(QString *);
-    void receiveConfigureAll(int,int,int,int);
-    void configOne(QString,QString,QString);
+    void sqlinsert(QVariant);
+    void receiveNokAll(int);
+    void configOne(QString,QString,QString,int);
+    void configOneGroup(QString,QString *,QString *);
 public:
     QThread m_thread;
     QSqlDatabase db2;
     //    QSqlDatabase db3;
     //    QSqlQuery query1;
     QSqlQuery query2;
-public :signals:
+    bool isFirst;
+    bool isFirstError;
+signals:
     void send_mysqlerror();
 
 

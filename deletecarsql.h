@@ -8,6 +8,7 @@
 #include <QDebug>
 #include <QSqlError>
 #include <QSqlQuery>
+#include "unistd.h"
 
 class DeleteCarSQL : public QObject
 {

@@ -1,10 +1,8 @@
 ﻿#include "fisupdate.h"
-#include <QSqlRecord>
-#include <QSettings>
-#include "GlobalVarible.h"
 FisUpdate::FisUpdate(QObject *parent) :
     QObject(parent)
 {
+    Factory = factory;
     fis_thread.start();
     this->moveToThread(&fis_thread);
 }
@@ -12,392 +10,248 @@ FisUpdate::FisUpdate(QObject *parent) :
 void FisUpdate::myfistimer()
 {
     qDebug()<< "fisupdate thread start";
-    db1=QSqlDatabase::addDatabase("QODBC","SQLServerconnection");
-    db1.setConnectOptions("SQL_ATTR_LOGIN_TIMEOUT=1;SQL_ATTR_CONNECTION_TIMEOUT=1");
-    db1.setDatabaseName("sqltighten");
-    db1.setPort(1433);
-    db1.setUserName(SqlUserName);
-    db1.setPassword(SqlPassword);
-    query1 = QSqlQuery(db1);
-
-    db2=QSqlDatabase::addDatabase("QMYSQL","mysqlconnection");
-    db2.setHostName("localhost");
-    db2.setDatabaseName("Tighten");
-    db2.setUserName("root");
-    db2.setPassword("123456");
-    query2 = QSqlQuery(db2);
-    query3 = QSqlQuery(db2);
-
-    //    if(!db1.isOpen())
-    //        fis_sql_open();
-    //    if(!db2.isOpen())
-    //        mysql_open();
-
-    fisupdataTimer = new QTimer(this);
-    connect(fisupdataTimer,SIGNAL(timeout()),this,SLOT(fisupdateFunc()));
-    fisupdataTimer->start(50000);
+    fisupdateFunc();
 }
 
 //50秒更新Fis
 void FisUpdate::fisupdateFunc()
 {
-    if(WIFI_STATE)
+    while(1)
     {
-        if(!db1.isOpen()||!QSqlDatabase::contains("SQLServerconnection"))
-            fis_sql_open();
-        if(!db2.isOpen()||!QSqlDatabase::contains("mysqlconnection"))
-            mysql_open();
-
-        if(db1.isOpen() && db2.isOpen() && QSqlDatabase::contains("SQLServerconnection") && QSqlDatabase::contains("mysqlconnection"))
+        if(Factory == "SVW3")
         {
-            //更新时间
-            if(!query1.exec("select CONVERT(VARCHAR(20),getdate(),120)"))
-                qDebug() << query1.lastError();
-            if (query1.next())
+            if(true)
             {
-                QString datetime = query1.value(0).toString();
-                system((QString("date -s \"") +datetime+QString("\"")).toLatin1().data());
+                QSqlDatabase db2=QSqlDatabase::addDatabase("QMYSQL","andon_connection_local");
+                db2.setHostName("localhost");
+                db2.setDatabaseName("Tighten");
+                db2.setUserName("root");
+                db2.setPassword("123456");
+                QSqlQuery query2 = QSqlQuery(db2);
 
-                //将系统时间写入RTC
-                system("hwclock -w");
-                if(datetime.mid(0,4).toInt()<2015)
-                    emit time_error(true);
-                else
-                    emit time_error(false);
-
-            }
-
-            if(!query2.exec("select count(*) from information_schema.columns where table_name='FisPreview'"))
-                qDebug()<<query2.lastError();
-            int column = 0;
-            while(query2.next())
-                column = query2.value(0).toInt();
-//            qDebug()<< "column" << column;
-            //    query2.exec("SELECT * FROM FisPreview");
-            //    query2.next();
-            //    int column = query2.record().count();
-            if(!query2.exec("select column_name from information_schema.columns where table_name='FisPreview'"))
-                qDebug()<<query2.lastError();
-            for(int i=0;i<6;i++)
-                query2.next();
-            QString condition = "ID, werk, spj, Knr, VIN";
-            QString column_name = "RecordID, Werk, SPJ, KNR, VIN ,LocalDateTime";
-            QString question_mark ="?, ?, ?, ?, ?, now()";
-            QString update_name = "RecordID =?, Werk =?, SPJ =?, KNR =?, VIN =?, LocalDateTime=now()";
-            while(query2.next())
-            {
-                condition = condition + ", "+query2.value(0).toString();
-                column_name = column_name + ", "+query2.value(0).toString();
-                question_mark = question_mark+", ?";
-                update_name = update_name+ ", "+query2.value(0).toString()+"=? ";
-            }
-           // update_name = update_name+"=?";
-
-//            QString question_mark ="?";
-//            QString update_name = query2.value(0).toString();
-//            while(query2.next())
-//            {
-//                column_name = column_name + ", "+query2.value(0).toString();
-//                question_mark = question_mark+", ?";
-//                update_name = update_name+ "=?, "+query2.value(0).toString();
-//            }
-//            update_name = update_name+"=?";
-//            qDebug()<<"condition"<<condition;
-//            qDebug()<<"column_name"<<column_name;
-//            qDebug()<<"question_mark"<<question_mark;
-//            qDebug()<<"update_name"<<update_name;
-
-            query2.exec("SELECT MAX(RecordID) FROM FisPreview");
-            query2.next();
-            QString MysqlMax = query2.value(0).toString();
-//            qDebug() << MysqlMax;
-//            QString aff= "SELECT "+condition+" FROM dbo.pnr WHERE RecordId >"+MysqlMax+" and Line_ID ="+QString::number(Line_ID);
-            QString aff= "SELECT "+condition+" FROM dbo.pnr WHERE ID >"+MysqlMax;
-            if(!query1.exec(aff))
-                qDebug() <<"query1.lastError()"<<query1.lastError();
-            while(query1.next())
-            {
-                //qDebug()<<"%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%";
-                query2.exec("SELECT COUNT(*) FROM FisPreview");
-                query2.next();
-                int numRows = query2.value(0).toInt();
-                if (numRows < 7000)
+                if(!db2.open())
                 {
-                    query2.prepare("insert into FisPreview ("+column_name+") values ("+question_mark+")");
+                    if(!db2.open())
+                    {
+                        qDebug()<< "andon local mysql "<< db2.lastError().text();
+                        return;
+                    }
+                    else
+                    {
+                        qDebug()<< "andon local mysql open ok 2";
+                    }
                 }
                 else
                 {
-                    query2.prepare("UPDATE FisPreview SET "+update_name+"  WHERE RecordID = (select Min(t.RecordID) from (select RecordID from FisPreview)as t)");
+                    qDebug()<< "andon local mysql open ok 1";
                 }
-                query2.addBindValue(query1.value(0).toInt());
-                query2.addBindValue(query1.value(1).toString());
-                query2.addBindValue(query1.value(2).toString());
-                query2.addBindValue(query1.value(3).toString());
-                query2.addBindValue(query1.value(4).toString());
-                for(int i=6;i<column;i++)
-                    query2.addBindValue(query1.value(i-1).toString());
-                if(!query2.exec())
-                    qDebug() <<"query2.lastError()"<<query2.lastError();
+
+                if(db2.isOpen() && QSqlDatabase::contains("andon_connection_local"))
+                {
+                    if(!query2.exec("CREATE TABLE IF NOT EXISTS andonLocal (id int primary key auto_increment,StationStatus int)"))
+                    {
+                        qDebug()<<"create tabel fail "<<query2.lastError();
+                        return;
+                    }
+
+                    query2.exec("select count(*) from andonLocal");
+                    query2.next();
+                    int num=query2.value(0).toInt();
+                    bool result = false;
+                    if(num)
+                        result=query2.exec("UPDATE andonLocal set StationStatus ="+QString::number(StationStatus)+" where id= 1");
+                    else
+                        result=query2.exec("insert into andonLocal(StationStatus) values(0);");
+                    if(!result)
+                        qDebug()<<"query2"<<query2.lastError();
+                    else
+                    {
+                        if(query2.numRowsAffected()==1)
+                        {
+                            qDebug()<< "updata andon local mysql success"<<StationStatus;
+                        }
+                        else
+                        {
+                            qDebug()<<"Status not Change or Ip wrong update andon local mysql fail";
+                        }
+                    }
+                }
+                else
+                    qDebug()<<"andon update fail";
+                if(db2.isOpen())
+                    db2.close();
             }
-
-
-
-            //    int m;
-            //    aff= "SELECT count(*) FROM Data.FisPreview WHERE RecordId >"+MysqlMax;
-            //    query1.exec(aff);
-            //    query1.next();
-            //    if(query1.isValid())
-            //    {
-            //        m=query1.value(0).toInt();
-
-            //        aff= "SELECT * FROM Data.FisPreview WHERE RecordId >";
-            //        aff.append(MysqlMax);
-
-            //        query1.exec(aff);
-            //        query1.next();
-            //    if(query1.isValid())
-            //    {
-            //        QVariantList Columns[column];
-            //        Columns[0] << query1.value(0).toInt();
-            //        int i;
-            //        for(i=1;i<column;i++)
-            //            Columns[i] << query1.value(i).toString();
-            //        while(query1.next())
-            //        {
-            //            Columns[0] << query1.value(0).toInt();
-            //            for(i=1;i<column;i++)
-            //                Columns[i] << query1.value(i).toString();
-            //        }
-
-            //        query2.exec("select column_name from information_schema.columns where table_name='FisPreview'");
-            //        query2.next();
-            //        QString column_name = query2.value(0).toString();
-            //        QString question_mark ="?";
-            //        while(query2.next())
-            //        {
-            //            column_name = column_name + ", "+query2.value(0).toString();
-            //            question_mark = question_mark+", ?";
-            //        }
-            //        query2.prepare("insert into FisPreview ("+column_name+") values ("+question_mark+")");
-            //        for(i=0;i<column;i++)
-            //            query2.addBindValue(Columns[i]);
-            //        if(!query2.execBatch())
-            //            qDebug() << query2.lastError();
-
-
-            //        QString Values[m][column];
-            //        int i;
-            //        m=1;
-            //        for(i=0;i<column;i++)
-            //            Values[0][i]=query1.value(i).toString();
-            //        while(query1.next())
-            //        {
-            //            for(i=0;i<column;i++)
-            //                Values[m][i]=query1.value(i).toString();
-            //            m++;
-            //        }
-            //        query2.exec("select column_name from information_schema.columns where table_name='FisPreview'");
-            //        query2.next();
-            //        QString column_name = query2.value(0).toString();
-            //        QString question_mark ="?";
-            //        QString update_name = query2.value(0).toString();
-            //        while(query2.next())
-            //        {
-            //            column_name = column_name + ", "+query2.value(0).toString();
-            //            question_mark = question_mark+", ?";
-            //            update_name = update_name+ "=?, "+query2.value(0).toString();
-            //        }
-            //        update_name = update_name+"=?";
-
-            //        for(i=0;i<m;i++)
-            //        {
-            //            query2.exec("SELECT COUNT(*) FROM FisPreview");
-            //            query2.next();
-            //            int numRows = query2.value(0).toInt();
-            //            if (numRows < 7000)
-            //            {
-            //                query2.prepare("insert into FisPreview ("+column_name+") values ("+question_mark+")");
-            //            }
-            //            else
-            //            {
-            //                query2.prepare("UPDATE FisPreview SET "+update_name+"  WHERE RecordID = (select Min(t.RecordID) from (select RecordID from FisPreview)as t)");
-            //            }
-            //            query2.addBindValue(Values[i][0].toInt());
-            //            for(j=1;j<column;j++)
-            //                query2.addBindValue(Values[i][j]);
-            //            if(!query2.exec())
-            //                qDebug() << query2.lastError();
-            //        }
-            //! [超过3000条后覆盖最早的]
-            //        //        query2.exec("SELECT * FROM FisPreview");
-            //        //        query2.last();
-            //        //        int numRows = query2.at() + 1;
-            //        query2.exec("SELECT count(*) FROM FisPreview");
-            //        query2.first();
-            //        int numRows = query2.value(0).toInt();
-            //        if (numRows > 3100)
-            //        {
-            //            query2.exec("delete from FisPreview order by RecordID limit "+ QString::number(numRows-3000));
-            //            //query2.exec("optimize table FisPreview");
-            //        }
-            //! [超过1100条后覆盖最早的]
-
-            //    }
-
-            //    query2.exec("select column_name from information_schema.columns where table_name='FisPreview'");
-            //    query2.next();
-            //    QString columns = query2.value(0).toString();
-            //    while(query.next())
-            //    {
-            //        columns = columns + ", "+query->value(0).toString();
-            //        qDebug()<<query->value(0).toString();
-            //    }
-            //    qDebug()<< "columns" << columns;
-            //    if (columns != "RecordID, Werk, SPJ, KNR, VIN, GSP, SAB, RAD, REI, BRS, LocalDateTime, HIS")
-            //    {
-            //        query2.exec("select column_name from information_schema.columns where table_name='FisPreview'");
-            //        query2.last();
-            //        QString Add = query->value(0).toString();
-            //        query1.exec(aff);
-            //        query1.next();
-            //        if(query1.isValid())
-            //        {
-            //            while(query1.next())
-            //            {
-            //                query2.exec("UPDATE FisPreview SET "+Add+" = "+query1.value(12).toString()+" WHERE Recordid = "+query1.value(0).toString());
-            //            }
-            //        }
-            //    }
+            QSqlDatabase::removeDatabase("andon_connection_local");
         }
-        sqlclose();
+        sleep(50);
     }
 }
 
 void FisUpdate::update_column(QString column)
 {
+    WIFIlock.lockForRead();
     if(WIFI_STATE)
     {
-        if(!db1.isOpen()||!QSqlDatabase::contains("SQLServerconnection"))
-            fis_sql_open();
-        if(!db2.isOpen()||!QSqlDatabase::contains("mysqlconnection"))
-            mysql_open();
-
-        if(db1.isOpen() && db2.isOpen() && QSqlDatabase::contains("SQLServerconnection") && QSqlDatabase::contains("mysqlconnection"))
+        WIFIlock.unlock();
+        if(true)
         {
-            bool isColumnName = false;
-            query1.exec("select column_name from information_schema.columns where table_name='FisPreview'");
-            while(query1.next())
+            QSqlDatabase db1=QSqlDatabase::addDatabase("QODBC","SQLServerconnection");
+            db1.setConnectOptions("SQL_ATTR_LOGIN_TIMEOUT=1;SQL_ATTR_CONNECTION_TIMEOUT=1");
+            db1.setDatabaseName("sqltighten");
+            db1.setPort(1433);
+            db1.setUserName(SqlUserName);
+            db1.setPassword(SqlPassword);
+            QSqlQuery query1 = QSqlQuery(db1);
+
+            if(!db1.open())
             {
-                if(column == query1.value(0).toString())
-                    isColumnName = true;
-            }
-            if(isColumnName)
-            {
-                //qDebug()<<"column"<<column;
-                if(query2.exec("select RecordID from FisPreview order by RecordID DESC LIMIT 1000"))
+                if(!db1.open())
                 {
-                    while(query2.next())
-                    {
-                        //qDebug()<<"query2"<<query2.value(0).toString();
-                        query1.exec("select "+column+" from FisPreview where RecordID="+query2.value(0).toString());
-                        query1.next();
-                        //qDebug()<<"query1"<<query1.value(0).toString();
-                        //qDebug()<<"UPDATE FisPreview SET "+column+" = \'"+query1.value(0).toString()+"\' WHERE RecordID = "+query2.value(0).toString();
-                        if(!query3.exec("UPDATE FisPreview SET "+column+" = \'"+query1.value(0).toString()+"\' WHERE RecordID = "+query2.value(0).toString()))
-                            qDebug()<<"update column query3"<<query3.lastError();
-                    }
+                    qDebug()<<"sqlserver fisupdate "<<db1.lastError().text();
                 }
                 else
-                    qDebug()<<"update column query2"<<query2.lastError();
+                {
+                    qDebug()<< "sqlserver fisupdate open ok 2";
+                }
+            }else
+            {
+                qDebug()<< "sqlserver fisupdate open ok 1";
             }
+
+            QSqlDatabase db2=QSqlDatabase::addDatabase("QMYSQL","mysqlconnection");
+            db2.setHostName("localhost");
+            db2.setDatabaseName("Tighten");
+            db2.setUserName("root");
+            db2.setPassword("123456");
+            QSqlQuery query2 = QSqlQuery(db2);
+            QSqlQuery query3 = QSqlQuery(db2);
+
+            if(!db2.open())
+            {
+                if(!db2.open())
+                {
+                    qDebug()<< "fisupdate localmysql "<< db2.lastError().text();
+                }else
+                {
+                    qDebug()<< "fisupdate localmysql open ok 2";
+                }
+            }else
+            {
+                qDebug()<< "fisupdate localmysql open ok 1";
+            }
+
+            if(db1.isOpen() && db2.isOpen() && QSqlDatabase::contains("SQLServerconnection") && QSqlDatabase::contains("mysqlconnection"))
+            {
+                qDebug()<<"update history 1000";
+                bool isColumnName = false;
+                QString aff = "";
+                if(Factory == "SVW3")
+                {
+                    aff= "select column_name from information_schema.columns where table_name='FisPreview'";
+                }
+                else if(Factory == "Ningbo")
+                {
+                    aff= "select column_name from information_schema.columns where table_name='pnr'";
+                }
+                if(!query1.exec(aff))
+                    qDebug()<<"286 query1.error"<<query1.lastError();
+                while(query1.next())
+                {
+                    qDebug()<<"query1.value(0):"<<query1.value(0).toString();
+                    if(column == query1.value(0).toString())
+                        isColumnName = true;
+                }
+                if(isColumnName)
+                {
+                    qDebug()<<"isColumnName column:"<<column;
+                    if(query2.exec("select RecordID from "+tablePreview+" order by RecordID DESC LIMIT 1000"))
+                    {
+                        while(query2.next())
+                        {
+                            if(Factory == "SVW3")
+                            {
+                                aff= "select "+column+" from Data.FisPreview where RecordID="+query2.value(0).toString();
+                            }
+                            else if(Factory == "Ningbo")
+                            {
+                                aff= "select "+column+" from dbo.pnr where ID="+query2.value(0).toString();
+                            }
+                            if(!query1.exec(aff))
+                                qDebug()<<"select column fail query1.lastError:"<<query1.lastError();
+                            query1.next();
+                            if(!query3.exec("UPDATE "+tablePreview+" SET "+column+" = \'"+query1.value(0).toString()+"\' WHERE RecordID = "+query2.value(0).toString()))
+                                qDebug()<<"update column query3"<<query3.lastError();
+                        }
+                    }
+                    else
+                        qDebug()<<"update column query2"<<query2.lastError();
+                }
+                else
+                    qDebug()<<"isn't ColumnName";
+            }
+            if(db1.isOpen())
+                db1.close();
+            if(db2.isOpen())
+                db2.close();
         }
-        sqlclose();
+        QSqlDatabase::removeDatabase("SQLServerconnection");
+        QSqlDatabase::removeDatabase("mysqlconnection");
     }
     else
+    {
+        WIFIlock.unlock();
         qDebug()<<"wifi unconnect update_column old datas fail";
-}
-
-// 数据服务器open FisPreview表
-void FisUpdate::fis_sql_open()
-{
-    if(QSqlDatabase::contains("SQLServerconnection")){
-        db1 = QSqlDatabase::database("SQLServerconnection");
-    }else{
-        db1=QSqlDatabase::addDatabase("QODBC","SQLServerconnection");
-        db1.setConnectOptions("SQL_ATTR_LOGIN_TIMEOUT=1;SQL_ATTR_CONNECTION_TIMEOUT=1");
-
-        db1.setDatabaseName("sqltighten");
-        db1.setPort(1433);
-        db1.setUserName(SqlUserName);
-        db1.setPassword(SqlPassword);
-        query1 = QSqlQuery(db1);
     }
-
-    if(!db1.open())
-    {
-        if(!db1.open())
-        {
-            qDebug()<<"sqlserver fisupdate "<<db1.lastError().text();
-        }
-        else
-        {
-            qDebug()<< "sqlserver fisupdate open ok 2";
-        }
-    }else
-    {
-        qDebug()<< "sqlserver fisupdate open ok 1";
-    }
-}
-
-// 本地mysql open
-void FisUpdate::mysql_open()
-{
-    if(QSqlDatabase::contains("mysqlconnection")){
-        db2 = QSqlDatabase::database("mysqlconnection");
-    }else{
-        db2=QSqlDatabase::addDatabase("QMYSQL","mysqlconnection");
-        db2.setHostName("localhost");
-        db2.setDatabaseName("Tighten");
-        db2.setUserName("root");
-        db2.setPassword("123456");
-        query2 = QSqlQuery(db2);
-        query3 = QSqlQuery(db2);
-    }
-
-    if(!db2.open())
-    {
-        if(!db2.open())
-        {
-            qDebug()<< "fisupdate localmysql "<< db2.lastError().text();
-        }else
-        {
-            qDebug()<< "fisupdate localmysql open ok 2";
-        }
-    }else
-    {
-        qDebug()<< "fisupdate localmysql open ok 1";
-    }
-}
-
-// 数据库关闭
-void FisUpdate::sqlclose()
-{
-    if(db1.isOpen())
-        db1.close();
-    if(db2.isOpen())
-        db2.close();
 }
 
 //查询时间
 void FisUpdate::QueryTime()
 {
-    if(!db1.isOpen()||!QSqlDatabase::contains("SQLServerconnection"))
-        fis_sql_open();
-    query1.exec("select CONVERT(VARCHAR(20),getdate(),120)");
-    query1.next();
-    QString datetime = query1.value(0).toString();
-    emit sendTime(datetime);
+    WIFIlock.lockForRead();
+    if(WIFI_STATE)
+    {
+        WIFIlock.unlock();
+        if(true)
+        {
+            QSqlDatabase db1=QSqlDatabase::addDatabase("QODBC","SQLServerconnection");
+            db1.setConnectOptions("SQL_ATTR_LOGIN_TIMEOUT=1;SQL_ATTR_CONNECTION_TIMEOUT=1");
+            db1.setDatabaseName("sqltighten");
+            db1.setPort(1433);
+            db1.setUserName(SqlUserName);
+            db1.setPassword(SqlPassword);
+            QSqlQuery query1 = QSqlQuery(db1);
 
-    if(db1.isOpen())
-       db1.close();
+            if(!db1.open())
+            {
+                if(!db1.open())
+                {
+                    qDebug()<<"sqlserver fisupdate "<<db1.lastError().text();
+                }
+                else
+                {
+                    qDebug()<< "sqlserver fisupdate open ok 2";
+                }
+            }else
+            {
+                qDebug()<< "sqlserver fisupdate open ok 1";
+            }
+
+
+            if(db1.isOpen()&&QSqlDatabase::contains("SQLServerconnection"))
+            {
+                query1.exec("select CONVERT(VARCHAR(20),getdate(),120)");
+                query1.next();
+                QString datetime = query1.value(0).toString();
+                emit sendTime(datetime);
+            }
+
+            if(db1.isOpen())
+                db1.close();
+        }
+        QSqlDatabase::removeDatabase("SQLServerconnection");
+    }
+    else
+    {
+        WIFIlock.unlock();
+    }
 }

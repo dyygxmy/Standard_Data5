@@ -165,12 +165,13 @@ KeyBoard::~KeyBoard()
 
 void KeyBoard::onButtonPressed(QWidget *widget)
 {
+
     QToolButton *button = dynamic_cast<QToolButton *>(widget);
     QString text = button->text();
     text = text.trimmed();
     if (text.isEmpty())
         return ;
-
+#if 0
     bool isThisOnTop = frameGeometry().top() < 10;
 
     QRect rect = button->rect();
@@ -194,11 +195,14 @@ void KeyBoard::onButtonPressed(QWidget *widget)
                               frameRect.width(), frameRect.height());
     }
     _toolTip->show(text);
+#endif
 }
 
 void KeyBoard::onButtonRelease(QWidget *)
 {
+#if 0
     _toolTip->hide();
+#endif
 }
 
 bool KeyBoard::event(QEvent *e)

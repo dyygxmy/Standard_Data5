@@ -1,5 +1,4 @@
 ﻿#include "vinreverse.h"
-#include <QDebug>
 #include <QSettings>
 
 VinReverse::VinReverse(QObject *parent) :
@@ -29,33 +28,33 @@ void VinReverse::newConnect()
 {
     isNexoConnect = false;
     m_pTcpSocket->abort(); //取消已有的连接
-    qDebug() << "waiting for connecting 4545 port";
-    m_pTcpSocket->connectToHost(CS351Ip,4545);
+    DTdebug() << "waiting for connecting 4545 port";
+    m_pTcpSocket->connectToHost(ControllerIp_1,4545);
 }
 
 void VinReverse::connectTimer()
 {
-    qDebug() << "4545 connectState:";
+    DTdebug() << "4545 connectState:";
     if(m_pTcpSocket->state() == QAbstractSocket::ConnectedState)
     {
-        qDebug() << "4545 connected";
+        DTdebug() << "4545 connect success";
         connect_Timer.stop();
     }
     else if(m_pTcpSocket->state() == QAbstractSocket::ConnectingState)
     {
-        qDebug() << "4545 connecting";
+        DTdebug() << "4545 connecting";
         newConnect();
     }
     else
     {
-        qDebug() << "m_pTcpSocket->state():" << m_pTcpSocket->state();
+        DTdebug() << "4545 m_pTcpSocket->state():" << m_pTcpSocket->state();
         newConnect();
     }
 }
 
 void VinReverse::connectDo()
 {
-    qDebug() << "4545 connectDo";
+    DTdebug() << "4545 connectDo";
     sendBuf = "00200001001         ";
     m_pTcpSocket->write(sendBuf,21);
     nexoheart.start(7000);
@@ -86,7 +85,7 @@ void VinReverse::revNexoData()
 
 void VinReverse::nexohearts()
 {
-    //qDebug() << "heart send";
+    //DTdebug() << "heart send";
     CS351_4545count++;
     if(CS351_4545count != 2)
     {
@@ -95,14 +94,14 @@ void VinReverse::nexohearts()
     }
     else
     {
-        qDebug() << "4545 heart time out";
+        DTdebug() << "4545 heart time out";
         disconnectdo();
     }
 }
 
 void VinReverse::receiveVin(QString Vin)
 {
-    qDebug() << "4545 VIN is" << Vin;
+    DTdebug() << "4545 VIN is" << Vin;
     QByteArray tmmp = "00370050            ";
     if(isNexoConnect)
     {
@@ -119,7 +118,7 @@ void VinReverse::receiveVin(QString Vin)
             sendBuf = tmmp.append("L5027724850277248");
         }
         m_pTcpSocket->write(sendBuf,38);
-        m_pTcpSocket->waitForBytesWritten();
+        m_pTcpSocket->waitForBytesWritten(300);
     }
     else
     {

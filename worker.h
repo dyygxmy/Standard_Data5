@@ -13,6 +13,11 @@
 #include <QSqlError>
 #include <QSqlQuery>
 #include <QVariant>
+#include "GlobalVarible.h"
+#include <QSettings>
+
+//#define D_WORK_AUTOTEST
+
 class Worker : public QObject
 {
     Q_OBJECT
@@ -20,34 +25,45 @@ public:
     explicit Worker(QObject *parent = 0);
     void dbconnect();
 
+    double dXVA ;
+    double dY1V ;  //double 类型的 Y1V
+    int  mSVW2_UpLoadError;
 
 signals:
     void haverec(int);
     void clo2();
-    void sendfromworkthread(QString *);
+    void sendfromworkthread(QVariant);
+    void sendErrorfromworkthread(QVariant);
     void havedconnect(bool);
-    void havedconnect(int);
-    void send_mainwindow(QString,QString,QString);
+    void disconnectTellPortA();
+    void send_mainwindow(QString,QString,QString,int,int);
+    void signalOutOfRange() ;
+
 public slots:
     void recMessage();
     void DataReceived();
     void fun1();
-    void fromNew1thread();
+    void closePortBTcpServer();
     void xml_parse(QByteArray);
+    void heartTimerFunc();
+    void portAsendPortB();
+    void slot_Test();
+
 private:
     QTcpServer *tcpServer;
     QTcpSocket *m_pTcpSocket;
+    QTimer *heartTimer;
     QThread m_thread;
     QByteArray receiveResult;
     QByteArray receiveResultDo;
     QDomNode node;
-    QString timeValue;
-    QString torqueValue;
-    QString angleValue;
-    QString gwkStatus;
-    QString data_model[11];
-
-
+//    QString data_model[11];
+    QString CurveStr;
+    int timerCount;
+    QString CyclePrevious;
+//    QString data_model[15];
+    QString Factory;
+    bool socket4710Flag;
 
 };
 

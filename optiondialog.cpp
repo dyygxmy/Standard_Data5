@@ -7,6 +7,8 @@ OptionDialog::OptionDialog(QWidget *parent) :
 {
     ui->setupUi(this);
     this->setWindowFlags(Qt::FramelessWindowHint);//去掉标题栏
+    if(factory == "BYDSZ")
+        ui->lineEdit_bx1code->setGeometry(181,100,151,35);
     // this->setCursor(Qt::BlankCursor); //去掉光标
 }
 

@@ -24,6 +24,7 @@ public slots:
     void datas();
     void disConnectDo();
     void displayError(QAbstractSocket::SocketError);
+    void closeMyself();
 
 private:
     QThread split_thread;

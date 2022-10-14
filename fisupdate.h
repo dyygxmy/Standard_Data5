@@ -8,16 +8,14 @@
 #include <QSqlQuery>
 #include <QDebug>
 #include <QSqlError>
-//#include <QStringList>
-//#include <QVariantList>
+#include <QSqlRecord>
+#include "GlobalVarible.h"
+#include "unistd.h"
 class FisUpdate : public QObject
 {
     Q_OBJECT
 public:
     explicit FisUpdate(QObject *parent = 0);
-    void fis_sql_open();
-    void mysql_open();
-    void sqlclose();
 
 signals:
     void time_error(bool);
@@ -30,12 +28,8 @@ public slots:
     void QueryTime();
 private:
     QTimer *fisupdataTimer;
-    QSqlDatabase db1;
-    QSqlDatabase db2;
-    QSqlQuery query1;
-    QSqlQuery query2;
-    QSqlQuery query3;
     QThread fis_thread;
+    QString Factory;
 };
 
 #endif // FISUPDATE_H

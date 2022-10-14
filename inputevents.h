@@ -9,6 +9,8 @@
 #include <linux/input.h>
 #include <QTimer>
 #include <stdio.h>
+#include <QFile>
+#include "unistd.h"
 class InputEvents : public QObject
 {
     Q_OBJECT
@@ -18,6 +20,7 @@ public:
 signals:
     void sendconfigwarning(bool);
     void sendbatterysta(bool);
+
 public slots:
     void InputEventStart();
     void mtimerarrve3();

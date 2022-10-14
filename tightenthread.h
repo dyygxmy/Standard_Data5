@@ -18,20 +18,23 @@ public:
 signals:
     void IsTigntenReady(bool);
     void ReconnectSendOperate();
-    void GunNotReady();
+    void disconnectTellPortB();
+
 public slots:
     void tightenStart();
     void newConnect(); //连接服务器
-    void sendMessage();  //发送数据
-    void sendheart();
     void displayError(QAbstractSocket::SocketError);
     void recsocket();
-    void getfile(unsigned short type);//打开xml文件
     void receivehavedconnect(bool);
     void receivedisconnect();
-    void cs351_header_func(unsigned short mid,unsigned short size,unsigned  short type, char *buf);
-    void number_change_ascii(unsigned int  num,unsigned char count,unsigned int div, char *ascii_buf);
-    void sendReadOperate();
+    void sendReadOperate(bool,int);
+    QString getHeaderFunc(int,int,int);
+
+    void sendCmdMessage(int);  //发送数据
+    void sendCmdToCs351(int);
+    void portBSendPortA();
+    void slot_SYNTime();
+
 private:
     QThread m_thread;
     QTcpSocket *tcpSocket;
@@ -42,16 +45,23 @@ private:
     QString enableTemp;
     QString aliveTemp;
     QString resetTemp;
-    QByteArray Data_Xml_Tx;
-    int flag;  //复位
+    QString resetTemp_timewrong;
+    QString disableTemp;
+    QString socketSpannerTemp ;
+    QString strInitializeXML ;
+//    QByteArray Data_Xml_Tx;
+//    int flag;  //复位
+    int sendCysleID;
     int cycleId;  //循环号
-    int isreset;
-    int isSendHeart;
     int config351count;
-    bool log351In;
-    bool log351out;
-    bool isconnected;
-    bool isdisconnect;
+    bool port4700LinkFlag; //cs351 4700 port connect flag
+    bool port4700DisconnectFlag;
+    bool cs351InitFlag;
+    int  timerCount;
+    int  timerCount1;
+    QString  ctlType;
+    bool sendEnableFlag;
+    bool enableFlag;
 
 };
 

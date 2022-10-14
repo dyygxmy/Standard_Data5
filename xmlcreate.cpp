@@ -17,7 +17,7 @@ void XMLCreate::XML_CreateStart()
 //生成新filename.xml
 void XMLCreate::updateXML()
 {
-    qDebug()<<"@@@@@@@@@@@@@@@@@@@@@@  xml update  @@@@@@@@@@@@@@@@@@@@@@@@@@";
+//    qDebug()<<"@@@@@@@@@@@@@@@@@@@@@@  xml update  @@@@@@@@@@@@@@@@@@@@@@@@@@";
 
     QSettings *configIniRead = new QSettings("/config.ini", QSettings::IniFormat);
 
@@ -27,8 +27,8 @@ void XMLCreate::updateXML()
     demo1.BasicPara[0] = configIniRead->value("baseinfo/StationName").toString();
     demo1.BasicPara[1] = configIniRead->value("baseinfo/StationId").toString();
     demo1.BasicPara[2] = configIniRead->value("baseinfo/LocalIp").toString();
-    demo1.BasicPara[3] = configIniRead->value("baseinfo/ControlType").toString();
-    demo1.BasicPara[4] = configIniRead->value("baseinfo/cs351Ip").toString();
+    demo1.BasicPara[3] = configIniRead->value("baseinfo/ControlType_1").toString();
+    demo1.BasicPara[4] = configIniRead->value("baseinfo/ControllerIp_1").toString();
     demo1.BasicPara[5] = configIniRead->value("baseinfo/PortA").toString();
     demo1.BasicPara[6] = configIniRead->value("baseinfo/PortB").toString();
     demo1.BasicPara[7] = configIniRead->value("baseinfo/isRFID").toString();
@@ -224,7 +224,7 @@ void XMLCreate::creat_xml(struct Parameter *p)
     QDomElement item1_1 = document.createElement("LineName");
     QDomElement item1_2 = document.createElement("StationNum");
     QDomElement item1_3 = document.createElement("StationIP");
-    QDomElement item1_4 = document.createElement("ControlType");
+    QDomElement item1_4 = document.createElement("ControlType_1");
     QDomElement item1_5 = document.createElement("ControlIP");
     QDomElement item1_6 = document.createElement("ControlPort");
     QDomElement item1_7 = document.createElement("ControlLocalPort");

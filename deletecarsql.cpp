@@ -10,12 +10,15 @@ DeleteCarSQL::DeleteCarSQL(QObject *parent) :
 //插入要删除车条码
 void DeleteCarSQL::SQL_Delete_Car()
 {
-    while(1)
+    qDebug()<< "DeleteCarSQL thread start";
+    forever
     {
-        RFIDlock.lockForRead();
+        deletelock.lockForRead();
+        WIFIlock.lockForRead();
         if(WIFI_STATE && !queue.isEmpty())
         {
-            RFIDlock.unlock();
+            WIFIlock.unlock();
+            deletelock.unlock();
             if(!db1.isOpen()||!QSqlDatabase::contains("Delete_connection"))
                 sql_open();
             if(db1.isOpen()||QSqlDatabase::contains("Delete_connection"))
@@ -41,7 +44,8 @@ void DeleteCarSQL::SQL_Delete_Car()
         }
         else
         {
-            RFIDlock.unlock();
+            WIFIlock.unlock();
+            deletelock.unlock();
         }
         sleep(2);
     }
